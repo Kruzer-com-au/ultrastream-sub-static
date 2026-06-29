@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UltraStream — Stream. Grow. Keep More.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --surface: #111111;
+    --surface-2: #1A1A1A;
+    --surface-3: #222222;
+    --white: #FFFFFF;
+    --orange: #FF5C00;
+    --orange-dim: rgba(255,92,0,0.12);
+    --orange-glow: rgba(255,92,0,0.4);
+    --red: #8B0000;
+    --grey: #555555;
+    --grey-light: #888888;
+    --border: rgba(255,255,255,0.07);
+    --border-orange: rgba(255,92,0,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px;
+    letter-spacing: -0.02em; color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--grey-light);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--orange) !important; color: var(--white) !important;
+    padding: 10px 22px; border-radius: 6px; font-weight: 600 !important;
+    font-size: 14px !important; transition: background 0.2s, box-shadow 0.2s !important;
+  }
+  .nav-cta:hover { background: #e05200 !important; box-shadow: 0 0 24px var(--orange-glow) !important; }
+
+  /* BUTTONS */
+  .btn-primary {
+    display: inline-block; background: var(--orange); color: var(--white);
+    padding: 16px 36px; border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600;
+    text-decoration: none; letter-spacing: -0.01em;
+    transition: background 0.2s, box-shadow 0.3s, transform 0.15s;
+    border: none; cursor: pointer;
+    animation: ctaPulse 3s ease infinite;
+  }
+  @keyframes ctaPulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(255,92,0,0); }
+    50% { box-shadow: 0 0 28px 4px rgba(255,92,0,0.35); }
+  }
+  .btn-primary:hover { background: #e05200; transform: translateY(-2px); box-shadow: 0 0 48px var(--orange-glow); animation: none; }
+  .btn-secondary {
+    display: inline-block; background: transparent; color: var(--white);
+    padding: 15px 36px; border-radius: 8px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 600;
+    text-decoration: none; letter-spacing: -0.01em;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.04); }
+
+  section { width: 100%; }
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 60px;
+    padding: 120px 48px 80px;
+    max-width: 1160px; margin: 0 auto;
+    position: relative;
+  }
+  #hero-wrapper {
+    position: relative; overflow: hidden;
+    background: var(--black);
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,92,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,92,0,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 100% 100% at 60% 50%, black 20%, transparent 80%);
+    pointer-events: none;
+  }
+  .hero-glow-top {
+    position: absolute; top: -300px; right: -200px;
+    width: 900px; height: 900px;
+    background: radial-gradient(ellipse, rgba(255,92,0,0.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-left { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 28px; padding: 7px 14px;
+    border: 1px solid rgba(255,92,0,0.3); border-radius: 100px;
+    background: rgba(255,92,0,0.07);
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--orange);
+    animation: blink 2s ease infinite;
+  }
+  @keyframes blink {
+    0%,100% { opacity:1; } 50% { opacity:0.3; }
+  }
+  .hero-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(40px, 5.5vw, 72px);
+    font-weight: 700; line-height: 1.0; letter-spacing: -0.04em;
+    margin-bottom: 24px;
+  }
+  .hero-headline .accent { color: var(--orange); }
+  .hero-subhead {
+    font-size: 17px; color: var(--grey-light); line-height: 1.65;
+    margin-bottom: 36px; max-width: 440px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
+  .hero-stats { display: flex; gap: 32px; padding-top: 32px; border-top: 1px solid var(--border); }
+  .hero-stat { text-align: left; }
+  .hero-stat-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 28px;
+    font-weight: 700; letter-spacing: -0.04em; display: block;
+  }
+  .hero-stat-num .o { color: var(--orange); }
+  .hero-stat-label { font-size: 12px; color: var(--grey-light); display: block; margin-top: 2px; }
+
+  /* HERO PLATFORM MOCKUP */
+  .hero-right { position: relative; z-index: 1; }
+  .platform-mockup {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,92,0,0.1);
+    transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
+    transition: transform 0.4s ease;
+  }
+  .platform-mockup:hover { transform: perspective(1200px) rotateY(-2deg) rotateX(1deg); }
+  .mockup-bar {
+    background: #0D0D0D; padding: 10px 16px;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .mockup-dot.red { background: #FF5F57; }
+  .mockup-dot.yellow { background: #FFBD2E; }
+  .mockup-dot.green { background: #28CA41; }
+  .mockup-url {
+    flex: 1; background: var(--surface-2); border-radius: 4px;
+    padding: 4px 12px; font-size: 11px; color: var(--grey-light);
+    text-align: center; margin: 0 8px;
+  }
+
+  /* REAL TALK */
+  #real-talk {
+    padding: 120px 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .real-talk-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+  }
+  .section-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 20px;
+  }
+  .section-body { font-size: 16px; color: var(--grey-light); line-height: 1.75; }
+
+  .pain-list { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+  .pain-item {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 24px; background: var(--surface-2);
+    border-radius: 12px; border: 1px solid var(--border);
+    transition: border-color 0.3s;
+  }
+  .pain-item:hover { border-color: var(--border-orange); }
+  .pain-icon-wrap {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(255,92,0,0.1); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pain-text strong { display: block; font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .pain-text p { font-size: 14px; color: var(--grey-light); line-height: 1.55; }
+
+  /* REVENUE */
+  #revenue {
+    padding: 140px 0; text-align: center;
+    position: relative; overflow: hidden; background: var(--black);
+  }
+  .rev-bg-glow {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 1200px; height: 700px;
+    background: radial-gradient(ellipse, rgba(255,92,0,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .rev-inner { position: relative; z-index: 1; }
+  .rev-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 48px;
+    display: block;
+  }
+  .rev-comparison {
+    display: flex; align-items: flex-end; justify-content: center;
+    gap: 40px; margin-bottom: 60px; flex-wrap: wrap;
+  }
+  .rev-block { text-align: center; }
+  .rev-name {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--grey-light); margin-bottom: 12px;
+  }
+  .rev-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; letter-spacing: -0.05em; line-height: 1;
+  }
+  .rev-num.them { font-size: clamp(56px,7vw,88px); color: rgba(255,255,255,0.18); }
+  .rev-num.us {
+    font-size: clamp(88px,13vw,148px); color: var(--orange);
+    text-shadow: 0 0 80px rgba(255,92,0,0.4);
+  }
+  .rev-pct { font-size: 0.45em; vertical-align: super; opacity: 0.7; }
+  .rev-divider { width: 1px; height: 80px; background: var(--border); align-self: center; }
+  .rev-tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(20px,2.5vw,32px);
+    font-weight: 700; letter-spacing: -0.03em; margin-bottom: 14px;
+  }
+  .rev-tagline .o { color: var(--orange); }
+  .rev-sub { font-size: 16px; color: var(--grey-light); max-width: 480px; margin: 0 auto 40px; line-height: 1.65; }
+
+  /* EARNINGS DASHBOARD MOCKUP */
+  .earnings-dash {
+    max-width: 640px; margin: 0 auto 48px;
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  }
+  .dash-header {
+    background: #0D0D0D;
+    padding: 12px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  }
+  .dash-header-title { color: var(--grey-light); }
+  .dash-live-badge {
+    background: rgba(255,92,0,0.15); color: var(--orange);
+    padding: 3px 10px; border-radius: 20px; font-size: 10px;
+    font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .dash-live-badge::before {
+    content: ''; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--orange); animation: blink 1.5s ease infinite;
+  }
+  .dash-body { padding: 24px; }
+  .dash-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
+  .dash-metric {
+    background: var(--surface-2); border-radius: 10px; padding: 16px;
+    border: 1px solid var(--border); text-align: left;
+  }
+  .dash-metric-label { font-size: 11px; color: var(--grey-light); font-weight: 500; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .dash-metric-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px; font-weight: 700; letter-spacing: -0.03em;
+  }
+  .dash-metric-value.orange { color: var(--orange); }
+  .dash-metric-change { font-size: 11px; color: #4ADE80; margin-top: 4px; }
+  .dash-bar-section { }
+  .dash-bar-label {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; margin-bottom: 6px;
+  }
+  .dash-bar-label span { color: var(--grey-light); }
+  .dash-bar-label strong { color: var(--white); font-size: 12px; }
+  .dash-bar-track {
+    height: 8px; background: var(--surface-3); border-radius: 4px; overflow: hidden; margin-bottom: 10px;
+  }
+  .dash-bar-fill { height: 100%; border-radius: 4px; }
+  .dash-bar-fill.orange { background: var(--orange); width: 97%; }
+  .dash-bar-fill.grey { background: var(--grey); }
+  .dash-bar-fill.twitch { background: #9146FF; width: 50%; }
+  .dash-bar-fill.kick { background: #53FC18; width: 95%; }
+  .rev-disclaimer { font-size: 12px; color: var(--grey); font-style: italic; margin-top: 12px; }
+
+  /* FEATURES */
+  #what-you-get {
+    padding: 120px 0;
+    background: var(--surface); border-top: 1px solid var(--border);
+  }
+  .section-header { text-align: center; margin-bottom: 72px; }
+  .section-header .section-headline { max-width: 540px; margin: 0 auto 14px; }
+  .section-header .section-body { max-width: 480px; margin: 0 auto; font-size: 16px; }
+  .features-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .feature-card {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 14px; padding: 0; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+  }
+  .feature-card:hover { border-color: var(--border-orange); transform: translateY(-4px); }
+  .feature-card-top { padding: 32px 32px 0; }
+  .feature-card-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: rgba(255,92,0,0.1); display: flex;
+    align-items: center; justify-content: center; margin-bottom: 20px;
+  }
+  .feature-title {
+    font-family: 'Space Grotesk', sans-serif; font-size: 19px;
+    font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px;
+  }
+  .feature-desc { font-size: 14px; color: var(--grey-light); line-height: 1.65; margin-bottom: 24px; }
+  .feature-visual {
+    height: 160px; background: var(--surface-3);
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; position: relative;
+  }
+
+  /* FOUNDING */
+  #founding {
+    padding: 120px 0; background: var(--black); border-top: 1px solid var(--border);
+  }
+  .founding-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: start; }
+  .founding-badge {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange);
+    border: 1px solid rgba(255,92,0,0.35); padding: 6px 14px;
+    border-radius: 4px; margin-bottom: 24px; background: rgba(255,92,0,0.07);
+  }
+  .founding-perks { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+  .founding-perk { display: flex; align-items: center; gap: 14px; font-size: 15px; color: rgba(255,255,255,0.8); }
+  .perk-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+  .founding-form-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 40px;
+  }
+  /* Urgency strip */
+  .urgency-strip {
+    background: rgba(255,92,0,0.1); border: 1px solid rgba(255,92,0,0.25);
+    border-radius: 10px; padding: 14px 20px; margin-bottom: 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .urgency-label { font-size: 13px; color: var(--orange); font-weight: 600; }
+  .spots-bar-wrap { flex: 1; }
+  .spots-bar-track { height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px; margin-top: 4px; }
+  .spots-bar-fill { height: 100%; width: 73%; background: var(--orange); border-radius: 3px; }
+  .spots-count { font-size: 12px; color: var(--grey-light); white-space: nowrap; }
+  .founding-form-title {
+    font-family: 'Space Grotesk', sans-serif; font-size: 20px;
+    font-weight: 700; letter-spacing: -0.025em; margin-bottom: 6px;
+  }
+  .founding-form-sub { font-size: 14px; color: var(--grey-light); margin-bottom: 24px; line-height: 1.6; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label {
+    display: block; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--grey-light); margin-bottom: 7px;
+  }
+  .form-group input, .form-group select {
+    width: 100%; background: var(--surface-2);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+    padding: 11px 14px; color: var(--white);
+    font-family: 'Inter', sans-serif; font-size: 14px;
+    outline: none; transition: border-color 0.2s; appearance: none;
+  }
+  .form-group input::placeholder { color: rgba(255,255,255,0.2); }
+  .form-group input:focus, .form-group select:focus { border-color: rgba(255,92,0,0.5); }
+  .form-group select option { background: #1A1A1A; }
+  .form-submit { width: 100%; margin-top: 8px; font-size: 15px; padding: 14px; }
+  .form-note { font-size: 12px; color: var(--grey); text-align: center; margin-top: 10px; }
+
+  /* VIEWERS */
+  #viewers {
+    padding: 120px 0; background: var(--surface); border-top: 1px solid var(--border);
+  }
+  .viewers-inner { text-align: center; max-width: 680px; margin: 0 auto 60px; }
+  .viewers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .viewer-card {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px; text-align: left;
+    transition: border-color 0.3s;
+  }
+  .viewer-card:hover { border-color: var(--border-orange); }
+  .viewer-card-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: rgba(255,92,0,0.08); display: flex;
+    align-items: center; justify-content: center; margin-bottom: 16px;
+  }
+  .viewer-card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+  .viewer-card-text { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.45; }
+
+  /* ECOSYSTEM DIAGRAM */
+  #ultraverse {
+    padding: 120px 0; background: var(--black); border-top: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .uv-glow {
+    position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%);
+    width: 1000px; height: 600px;
+    background: radial-gradient(ellipse, rgba(139,0,0,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .uv-inner { position: relative; z-index: 1; text-align: center; }
+  .uv-desc { font-size: 17px; color: var(--grey-light); max-width: 560px; margin: 0 auto 64px; line-height: 1.7; }
+
+  /* FAQ ACCORDION */
+  #faq {
+    padding: 100px 0; background: var(--surface); border-top: 1px solid var(--border);
+  }
+  .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 56px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .faq-accordion {
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-q-btn {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 24px 0; text-align: left;
+  }
+  .faq-q-inner { display: flex; align-items: center; gap: 16px; }
+  .faq-q-icon {
+    width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+    background: rgba(255,92,0,0.08); display: flex;
+    align-items: center; justify-content: center;
+  }
+  .faq-q-text {
+    font-family: 'Space Grotesk', sans-serif; font-size: 17px;
+    font-weight: 600; color: var(--white); letter-spacing: -0.015em;
+  }
+  .faq-chevron { flex-shrink: 0; transition: transform 0.3s; }
+  .faq-accordion.open .faq-chevron { transform: rotate(180deg); }
+  .faq-answer {
+    overflow: hidden; max-height: 0; transition: max-height 0.35s ease, padding 0.25s;
+    padding: 0 52px;
+  }
+  .faq-accordion.open .faq-answer { max-height: 200px; padding-bottom: 20px; padding-top: 0; }
+  .faq-answer p { font-size: 15px; color: var(--grey-light); line-height: 1.7; }
+
+  /* FINAL CTA */
+  #final-cta {
+    position: relative; overflow: hidden;
+    min-height: 560px; display: flex; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .final-cta-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 80% at 50% 50%, rgba(255,92,0,0.18) 0%, rgba(139,0,0,0.12) 40%, rgba(10,10,10,0.98) 100%),
+      repeating-linear-gradient(
+        45deg,
+        rgba(255,92,0,0.025) 0px,
+        rgba(255,92,0,0.025) 1px,
+        transparent 1px,
+        transparent 60px
+      );
+  }
+  .final-cta-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, var(--black) 0%, transparent 15%, transparent 85%, var(--black) 100%);
+  }
+  .final-inner {
+    position: relative; z-index: 1;
+    max-width: 720px; padding: 80px 48px;
+  }
+  .final-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 700; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 20px;
+  }
+  .final-sub { font-size: 18px; color: var(--grey-light); margin-bottom: 44px; }
+  .final-cta-note { font-size: 13px; color: var(--grey); margin-top: 20px; }
+
+  /* FOUNDING CTA CARD (replaces form card) */
+  .founding-cta-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 40px;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 500;
+    background: rgba(0,0,0,0.82); backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: var(--surface); border: 1px solid rgba(255,92,0,0.25);
+    border-radius: 20px; width: 100%; max-width: 520px;
+    max-height: 90vh; overflow: hidden;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,92,0,0.1);
+    position: relative; animation: modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes modalIn {
+    from { opacity:0; transform: scale(0.92) translateY(16px); }
+    to { opacity:1; transform: scale(1) translateY(0); }
+  }
+  .modal-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .modal-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+  }
+  .modal-close {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 8px; width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--grey-light); font-size: 18px;
+    transition: background 0.2s, color 0.2s; flex-shrink: 0;
+  }
+  .modal-close:hover { background: var(--surface-3); color: var(--white); }
+  .modal-urgency {
+    padding: 12px 24px;
+    background: rgba(255,92,0,0.07);
+    border-bottom: 1px solid rgba(255,92,0,0.15);
+    font-size: 12px; font-weight: 600; color: var(--orange);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .modal-urgency::before { content: '⚡'; }
+  .modal-iframe-wrap {
+    width: 100%; overflow: auto;
+  }
+  .modal-iframe-wrap iframe {
+    width: 100%; min-height: 320px; border: none; display: block;
+    background: var(--surface);
+  }
+
+
+  footer {
+    padding: 40px 48px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--surface);
+  }
+  .footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); }
+  .footer-logo span { color: var(--orange); }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 13px; color: var(--grey-light); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { font-size: 12px; color: var(--grey); }
+
+  /* SCROLL ANIMATIONS */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 960px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .container { padding: 0 24px; }
+    #hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 48px; }
+    .hero-right { display: none; }
+    .hero-subhead { max-width: 100%; }
+    .real-talk-inner { grid-template-columns: 1fr; gap: 48px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .founding-inner { grid-template-columns: 1fr; gap: 48px; }
+    .viewers-grid { grid-template-columns: 1fr; }
+    .rev-comparison { flex-direction: column; align-items: center; }
+    .rev-divider { display: none; }
+    footer { flex-direction: column; gap: 24px; text-align: center; padding: 32px 24px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up, .btn-primary { transition: none; animation: none; opacity: 1; transform: none; }
+    .hero-eyebrow::before, .dash-live-badge::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Ultra<span>Stream</span></a>
+  <ul class="nav-links">
+    <li><a href="#what-you-get">For Creators</a></li>
+    <li><a href="#viewers">For Viewers</a></li>
+    <li><a href="#ultraverse">Ultraverse</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><button class="nav-cta" onclick="openModal('creator')" style="border:none;cursor:pointer;font-family:'Inter',sans-serif;">Start Streaming</button></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero-wrapper">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow-top"></div>
+  <div id="hero">
+    <div class="hero-left fade-up">
+      <div class="hero-eyebrow">Founding Creator Program Now Open</div>
+      <h1 class="hero-headline">Stop streaming<br>into <span class="accent">the void.</span></h1>
+      <p class="hero-subhead">Grow your community. Keep more of what you earn.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openModal('creator')">Become a Founding Creator</button>
+        <a href="#what-you-get" class="btn-secondary">See What You Get</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num"><span class="o">97</span>%</span>
+          <span class="hero-stat-label">Revenue to you</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">0</span>
+          <span class="hero-stat-label">New software needed</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num"><span class="o">Day 1</span></span>
+          <span class="hero-stat-label">Earn from launch</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right fade-up">
+      <!-- Platform UI Mockup -->
+      <div class="platform-mockup">
+        <div class="mockup-bar">
+          <div class="mockup-dot red"></div>
+          <div class="mockup-dot yellow"></div>
+          <div class="mockup-dot green"></div>
+          <div class="mockup-url">ultrastream.one/dashboard</div>
+        </div>
+        <svg viewBox="0 0 480 340" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;">
+          <rect width="480" height="340" fill="#111111"/>
+          <!-- Sidebar -->
+          <rect x="0" y="0" width="56" height="340" fill="#0D0D0D"/>
+          <rect x="8" y="16" width="40" height="40" rx="10" fill="rgba(255,92,0,0.15)"/>
+          <text x="28" y="41" text-anchor="middle" font-size="16" fill="#FF5C00" font-family="sans-serif">U</text>
+          <rect x="12" y="72" width="32" height="32" rx="8" fill="#1A1A1A"/>
+          <rect x="12" y="114" width="32" height="32" rx="8" fill="#1A1A1A"/>
+          <rect x="12" y="156" width="32" height="32" rx="8" fill="#1A1A1A"/>
+          <rect x="12" y="198" width="32" height="32" rx="8" fill="#1A1A1A"/>
+          <!-- Main content -->
+          <!-- Top bar -->
+          <rect x="56" y="0" width="424" height="44" fill="#0D0D0D"/>
+          <text x="72" y="27" font-size="12" fill="#888888" font-family="sans-serif" font-weight="600">Creator Dashboard</text>
+          <rect x="380" y="10" width="70" height="24" rx="6" fill="#FF5C00"/>
+          <text x="415" y="26" text-anchor="middle" font-size="10" fill="white" font-family="sans-serif" font-weight="700">GO LIVE</text>
+          <!-- Metric cards -->
+          <rect x="68" y="56" width="108" height="68" rx="10" fill="#1A1A1A" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="80" y="75" font-size="9" fill="#666666" font-family="sans-serif" font-weight="700" letter-spacing="0.5">EARNINGS TODAY</text>
+          <text x="80" y="96" font-size="20" fill="#FF5C00" font-family="sans-serif" font-weight="700">$248</text>
+          <text x="80" y="112" font-size="9" fill="#4ADE80" font-family="sans-serif">↑ 22% vs last week</text>
+          <rect x="188" y="56" width="108" height="68" rx="10" fill="#1A1A1A" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="200" y="75" font-size="9" fill="#666666" font-family="sans-serif" font-weight="700" letter-spacing="0.5">LIVE VIEWERS</text>
+          <text x="200" y="96" font-size="20" fill="white" font-family="sans-serif" font-weight="700">1,204</text>
+          <text x="200" y="112" font-size="9" fill="#4ADE80" font-family="sans-serif">↑ Peak 1,847</text>
+          <rect x="308" y="56" width="148" height="68" rx="10" fill="#1A1A1A" stroke="rgba(255,92,0,0.2)" stroke-width="1"/>
+          <text x="320" y="75" font-size="9" fill="#666666" font-family="sans-serif" font-weight="700" letter-spacing="0.5">YOUR REVENUE SHARE</text>
+          <text x="320" y="99" font-size="26" fill="#FF5C00" font-family="sans-serif" font-weight="700">97%</text>
+          <text x="372" y="99" font-size="11" fill="rgba(255,92,0,0.6)" font-family="sans-serif" font-weight="700">always</text>
+          <!-- Stream preview -->
+          <rect x="68" y="136" width="260" height="150" rx="10" fill="#0D0D0D" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <rect x="68" y="136" width="260" height="150" rx="10" fill="url(#streamGrad)"/>
+          <defs>
+            <linearGradient id="streamGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1A0800"/>
+              <stop offset="100%" stop-color="#0D0D0D"/>
+            </linearGradient>
+          </defs>
+          <circle cx="198" cy="192" r="24" fill="rgba(255,92,0,0.15)" stroke="rgba(255,92,0,0.4)" stroke-width="1.5"/>
+          <polygon points="192,182 192,202 212,192" fill="#FF5C00"/>
+          <text x="84" y="156" font-size="9" fill="#888888" font-family="sans-serif">STREAM PREVIEW</text>
+          <rect x="80" y="272" width="36" height="6" rx="3" fill="#FF5C00"/>
+          <rect x="122" y="272" width="28" height="6" rx="3" fill="#333333"/>
+          <!-- Chat panel -->
+          <rect x="340" y="136" width="116" height="150" rx="10" fill="#1A1A1A" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <text x="352" y="155" font-size="9" fill="#666666" font-family="sans-serif" font-weight="700">LIVE CHAT</text>
+          <rect x="348" y="162" width="60" height="6" rx="3" fill="#333333"/>
+          <rect x="348" y="174" width="88" height="6" rx="3" fill="#333333"/>
+          <rect x="348" y="186" width="72" height="6" rx="3" fill="#333333"/>
+          <rect x="348" y="198" width="80" height="6" rx="3" fill="#333333"/>
+          <rect x="348" y="210" width="56" height="6" rx="3" fill="#333333"/>
+          <rect x="348" y="222" width="84" height="6" rx="3" fill="#333333"/>
+          <rect x="348" y="234" width="68" height="6" rx="3" fill="rgba(255,92,0,0.3)"/>
+          <rect x="348" y="258" width="100" height="20" rx="5" fill="#222222" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+          <text x="358" y="271" font-size="9" fill="#444444" font-family="sans-serif">Say something...</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REAL TALK -->
+<section id="real-talk">
+  <div class="container">
+    <div class="real-talk-inner">
+      <div class="fade-up">
+        <div class="section-label">Real Talk</div>
+        <h2 class="section-headline">Streaming isn't the hard part.<br>Getting discovered is.</h2>
+        <p class="section-body">You spend hours creating. The algorithm shrugs. You deserve better than hoping today's platform likes you.</p>
+      </div>
+      <ul class="pain-list fade-up">
+        <li class="pain-item">
+          <div class="pain-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#FF5C00" stroke-width="1.5"/>
+              <path d="M12 7v5l3 3" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="pain-text">
+            <strong>You're invisible</strong>
+            <p>Every platform tells you to keep posting. Nobody tells you how to actually get discovered.</p>
+          </div>
+        </li>
+        <li class="pain-item">
+          <div class="pain-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L15 9H22L16.5 13.5L18.5 21L12 17L5.5 21L7.5 13.5L2 9H9L12 2Z" stroke="#FF5C00" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="pain-text">
+            <strong>You're underpaid</strong>
+            <p>Making money shouldn't feel like beating a final boss. Yet here we are.</p>
+          </div>
+        </li>
+        <li class="pain-item">
+          <div class="pain-icon-wrap">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="6" width="18" height="13" rx="2" stroke="#FF5C00" stroke-width="1.5"/>
+              <path d="M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2" stroke="#FF5C00" stroke-width="1.5"/>
+              <path d="M9 12h6M12 10v4" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="pain-text">
+            <strong>You're building for the platform, not yourself</strong>
+            <p>Algorithm changes. Bans. Demonetisation. You have no control.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REVENUE -->
+<section id="revenue">
+  <div class="rev-bg-glow"></div>
+  <div class="container">
+    <div class="rev-inner fade-up">
+      <span class="rev-label">Revenue Share. No Asterisks.</span>
+      <div class="rev-comparison">
+        <div class="rev-block">
+          <div class="rev-name">Twitch</div>
+          <div class="rev-num them">50<span class="rev-pct">%</span></div>
+        </div>
+        <div class="rev-divider"></div>
+        <div class="rev-block">
+          <div class="rev-name">YouTube</div>
+          <div class="rev-num them">55–70<span class="rev-pct">%</span></div>
+          <div style="font-size:10px;color:var(--grey);margin-top:8px;line-height:1.5;">55% ad rev<br>70% Super Chats</div>
+        </div>
+        <div class="rev-divider"></div>
+        <div class="rev-block">
+          <div class="rev-name">UltraStream</div>
+          <div class="rev-num us">97<span class="rev-pct">%</span></div>
+        </div>
+      </div>
+
+      <!-- Earnings Dashboard -->
+      <div class="earnings-dash">
+        <div class="dash-header">
+          <span class="dash-header-title">Revenue Dashboard</span>
+          <span class="dash-live-badge">Live</span>
+        </div>
+        <div class="dash-body">
+          <div class="dash-row">
+            <div class="dash-metric">
+              <div class="dash-metric-label">Your Cut</div>
+              <div class="dash-metric-value orange">$970</div>
+              <div class="dash-metric-change">per $1,000 earned</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-metric-label">Platform Fee</div>
+              <div class="dash-metric-value">$30</div>
+              <div class="dash-metric-change" style="color:var(--grey-light)">That's it. We keep 3%.</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-metric-label">Monthly Est.</div>
+              <div class="dash-metric-value orange">$4,850</div>
+              <div class="dash-metric-change">↑ 94% more than Twitch</div>
+            </div>
+          </div>
+          <div class="dash-bar-section">
+            <div class="dash-bar-label"><span>UltraStream</span><strong>97%</strong></div>
+            <div class="dash-bar-track"><div class="dash-bar-fill orange"></div></div>
+            <div class="dash-bar-label"><span>YouTube (ad rev)</span><strong>55%</strong></div>
+            <div class="dash-bar-track"><div class="dash-bar-fill kick" style="width:55%;background:#FF0000;"></div></div>
+            <div class="dash-bar-label"><span>Twitch</span><strong>50%</strong></div>
+            <div class="dash-bar-track"><div class="dash-bar-fill twitch"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="rev-tagline">That's not a typo. <span class="o">97%</span> goes to you.</h2>
+      <p class="rev-sub">It doesn't change after your first month, your first thousand subs, or ever.</p>
+      <button class="btn-primary" onclick="openModal('creator')">Start Earning More</button>
+      <p class="rev-disclaimer">Revenue share applies to eligible creator earnings on the UltraStream platform.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section id="what-you-get">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">For Creators</div>
+      <h2 class="section-headline">Built for creators. Not advertisers.</h2>
+      <p class="section-body">Every feature starts with one question: does this help creators grow? If the answer's no, it doesn't make the cut.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card fade-up">
+        <div class="feature-card-top">
+          <div class="feature-card-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path d="M13 3L16 10H23L17.5 14.5L19.5 22L13 18L6.5 22L8.5 14.5L3 10H10L13 3Z" stroke="#FF5C00" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Better Discovery</h3>
+          <p class="feature-desc">Get found by the right people, not just whoever the algorithm decided to serve today.</p>
+        </div>
+        <div class="feature-visual">
+          <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <rect width="400" height="160" fill="#1A1A1A"/>
+            <text x="16" y="28" font-size="10" fill="#555555" font-family="sans-serif" font-weight="700" letter-spacing="0.5">DISCOVERY FEED</text>
+            <!-- Creator cards -->
+            <rect x="12" y="40" width="100" height="108" rx="8" fill="#222222" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <rect x="12" y="40" width="100" height="60" rx="8" fill="#2A1400"/>
+            <circle cx="62" cy="108" r="16" fill="#333333" stroke="#1A1A1A" stroke-width="2"/>
+            <rect x="24" y="128" width="76" height="7" rx="3" fill="#333333"/>
+            <rect x="32" y="140" width="60" height="5" rx="2" fill="#2A2A2A"/>
+            <rect x="120" y="40" width="100" height="108" rx="8" fill="#222222" stroke="rgba(255,92,0,0.25)" stroke-width="1"/>
+            <rect x="120" y="40" width="100" height="60" rx="8" fill="#1A0800"/>
+            <circle cx="170" cy="108" r="16" fill="#FF5C00" opacity="0.3" stroke="#1A1A1A" stroke-width="2"/>
+            <rect x="132" y="128" width="76" height="7" rx="3" fill="#444444"/>
+            <rect x="140" y="140" width="60" height="5" rx="2" fill="#333333"/>
+            <rect x="228" y="40" width="100" height="108" rx="8" fill="#222222" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <rect x="228" y="40" width="100" height="60" rx="8" fill="#001A0A"/>
+            <circle cx="278" cy="108" r="16" fill="#333333" stroke="#1A1A1A" stroke-width="2"/>
+            <rect x="240" y="128" width="76" height="7" rx="3" fill="#333333"/>
+            <rect x="248" y="140" width="60" height="5" rx="2" fill="#2A2A2A"/>
+            <!-- Hot badge -->
+            <rect x="126" y="46" width="36" height="16" rx="4" fill="#FF5C00"/>
+            <text x="144" y="57" text-anchor="middle" font-size="8" fill="white" font-family="sans-serif" font-weight="700">RISING</text>
+            <!-- Search bar -->
+            <rect x="336" y="40" width="52" height="26" rx="6" fill="#333333"/>
+            <text x="362" y="56" text-anchor="middle" font-size="10" fill="#666666" font-family="sans-serif">🔍</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-card-top">
+          <div class="feature-card-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path d="M13 2v22M6 8h14M6 13h14M6 18h14" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">More Ways to Earn</h3>
+          <p class="feature-desc">Subscriptions, tips, VOD revenue. Real opportunities to build sustainable income.</p>
+        </div>
+        <div class="feature-visual">
+          <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <rect width="400" height="160" fill="#1A1A1A"/>
+            <text x="16" y="28" font-size="10" fill="#555555" font-family="sans-serif" font-weight="700" letter-spacing="0.5">REVENUE BREAKDOWN</text>
+            <!-- Bars -->
+            <rect x="40" y="140" width="36" height="40" rx="4" fill="#333333" transform="translate(0,-40)"/>
+            <rect x="40" y="140" width="36" height="68" rx="4" fill="#FF5C00" opacity="0.7" transform="translate(0,-68)"/>
+            <rect x="100" y="140" width="36" height="40" rx="4" fill="#333333" transform="translate(0,-40)"/>
+            <rect x="100" y="140" width="36" height="52" rx="4" fill="#FF5C00" opacity="0.7" transform="translate(0,-52)"/>
+            <rect x="160" y="140" width="36" height="40" rx="4" fill="#333333" transform="translate(0,-40)"/>
+            <rect x="160" y="140" width="36" height="84" rx="4" fill="#FF5C00" opacity="0.85" transform="translate(0,-84)"/>
+            <rect x="220" y="140" width="36" height="40" rx="4" fill="#333333" transform="translate(0,-40)"/>
+            <rect x="220" y="140" width="36" height="96" rx="4" fill="#FF5C00" transform="translate(0,-96)"/>
+            <rect x="280" y="140" width="36" height="40" rx="4" fill="#333333" transform="translate(0,-40)"/>
+            <rect x="280" y="140" width="36" height="112" rx="4" fill="#FF5C00" transform="translate(0,-112)"/>
+            <rect x="340" y="140" width="36" height="40" rx="4" fill="#333333" transform="translate(0,-40)"/>
+            <rect x="340" y="140" width="36" height="128" rx="4" fill="#FF5C00" transform="translate(0,-128)"/>
+            <!-- Line -->
+            <line x1="16" y1="140" x2="384" y2="140" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+            <text x="58" y="155" text-anchor="middle" font-size="8" fill="#444444" font-family="sans-serif">Jan</text>
+            <text x="118" y="155" text-anchor="middle" font-size="8" fill="#444444" font-family="sans-serif">Feb</text>
+            <text x="178" y="155" text-anchor="middle" font-size="8" fill="#444444" font-family="sans-serif">Mar</text>
+            <text x="238" y="155" text-anchor="middle" font-size="8" fill="#444444" font-family="sans-serif">Apr</text>
+            <text x="298" y="155" text-anchor="middle" font-size="8" fill="#444444" font-family="sans-serif">May</text>
+            <text x="358" y="155" text-anchor="middle" font-size="8" fill="#888888" font-family="sans-serif">Jun</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-card-top">
+          <div class="feature-card-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <rect x="3" y="5" width="20" height="14" rx="3" stroke="#FF5C00" stroke-width="1.5"/>
+              <path d="M9 22h8M13 19v3" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="13" cy="12" r="3" stroke="#FF5C00" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Zero Setup</h3>
+          <p class="feature-desc">Use OBS, Ecamm, or any tool via stream key. No new software. Just go live.</p>
+        </div>
+        <div class="feature-visual">
+          <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <rect width="400" height="160" fill="#1A1A1A"/>
+            <!-- Steps -->
+            <circle cx="80" cy="80" r="28" fill="#222222" stroke="rgba(255,92,0,0.3)" stroke-width="1.5"/>
+            <text x="80" y="76" text-anchor="middle" font-size="9" fill="#888888" font-family="sans-serif">YOUR</text>
+            <text x="80" y="88" text-anchor="middle" font-size="9" fill="#888888" font-family="sans-serif">TOOLS</text>
+            <text x="80" y="120" text-anchor="middle" font-size="9" fill="#555555" font-family="sans-serif">OBS / Ecamm</text>
+            <line x1="108" y1="80" x2="152" y2="80" stroke="rgba(255,92,0,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <polygon points="150,76 158,80 150,84" fill="#FF5C00"/>
+            <circle cx="200" cy="80" r="28" fill="#2A1400" stroke="#FF5C00" stroke-width="1.5"/>
+            <text x="200" y="76" text-anchor="middle" font-size="9" fill="#FF5C00" font-family="sans-serif" font-weight="700">STREAM</text>
+            <text x="200" y="88" text-anchor="middle" font-size="9" fill="#FF5C00" font-family="sans-serif" font-weight="700">KEY</text>
+            <text x="200" y="120" text-anchor="middle" font-size="9" fill="#555555" font-family="sans-serif">30 seconds</text>
+            <line x1="228" y1="80" x2="272" y2="80" stroke="rgba(255,92,0,0.4)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <polygon points="270,76 278,80 270,84" fill="#FF5C00"/>
+            <circle cx="320" cy="80" r="28" fill="#222222" stroke="rgba(255,92,0,0.3)" stroke-width="1.5"/>
+            <text x="320" y="76" text-anchor="middle" font-size="9" fill="#888888" font-family="sans-serif">GO</text>
+            <text x="320" y="88" text-anchor="middle" font-size="9" fill="#888888" font-family="sans-serif">LIVE</text>
+            <text x="320" y="120" text-anchor="middle" font-size="9" fill="#555555" font-family="sans-serif">UltraStream</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-card-top">
+          <div class="feature-card-icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path d="M20 12c0 4.4-3.1 8-7 8s-7-3.6-7-8 3.1-8 7-8" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 5h5v5" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 5L13 13" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Community-First Tools</h3>
+          <p class="feature-desc">Live chat, clips, community feeds. A platform that grows with you, not around you.</p>
+        </div>
+        <div class="feature-visual">
+          <svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <rect width="400" height="160" fill="#1A1A1A"/>
+            <text x="16" y="28" font-size="10" fill="#555555" font-family="sans-serif" font-weight="700" letter-spacing="0.5">LIVE CHAT</text>
+            <!-- Chat bubbles -->
+            <rect x="12" y="36" width="180" height="24" rx="8" fill="#222222"/>
+            <rect x="12" y="38" width="6" height="6" rx="3" fill="#FF5C00" x="18" y="45"/>
+            <circle cx="24" cy="48" r="7" fill="#333333"/>
+            <rect x="36" y="42" width="120" height="6" rx="3" fill="#333333"/>
+            <rect x="36" y="52" width="80" height="5" rx="2" fill="#2A2A2A"/>
+            <rect x="12" y="68" width="200" height="24" rx="8" fill="#222222"/>
+            <circle cx="24" cy="80" r="7" fill="#444444"/>
+            <rect x="36" y="74" width="140" height="6" rx="3" fill="#333333"/>
+            <rect x="36" y="84" width="100" height="5" rx="2" fill="#2A2A2A"/>
+            <rect x="208" y="68" width="180" height="24" rx="8" fill="#2A1400" stroke="rgba(255,92,0,0.2)" stroke-width="1"/>
+            <circle cx="220" cy="80" r="7" fill="#FF5C00" opacity="0.5"/>
+            <rect x="232" y="74" width="120" height="6" rx="3" fill="#444444"/>
+            <rect x="232" y="84" width="80" height="5" rx="2" fill="#333333"/>
+            <rect x="12" y="100" width="160" height="24" rx="8" fill="#222222"/>
+            <circle cx="24" cy="112" r="7" fill="#555555"/>
+            <rect x="36" y="106" width="100" height="6" rx="3" fill="#333333"/>
+            <rect x="36" y="116" width="60" height="5" rx="2" fill="#2A2A2A"/>
+            <!-- Input -->
+            <rect x="12" y="132" width="376" height="22" rx="6" fill="#222222" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+            <text x="24" y="146" font-size="9" fill="#444444" font-family="sans-serif">Say something to the community...</text>
+            <rect x="362" y="135" width="20" height="16" rx="4" fill="#FF5C00"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDING -->
+<section id="founding">
+  <div class="container">
+    <div class="founding-inner">
+      <div class="fade-up">
+        <div class="founding-badge">Founding Creator Program</div>
+        <h2 class="section-headline">Join early.<br>Help shape<br>the platform.</h2>
+        <p class="section-body" style="margin-top:16px;">Tell us what works. Tell us what doesn't. Build UltraStream with us, not after us.</p>
+        <ul class="founding-perks">
+          <li class="founding-perk"><span class="perk-dot"></span>97% revenue share from day one</li>
+          <li class="founding-perk"><span class="perk-dot"></span>Priority discovery in the platform</li>
+          <li class="founding-perk"><span class="perk-dot"></span>Direct access to the product team</li>
+          <li class="founding-perk"><span class="perk-dot"></span>Founding Creator badge on your profile</li>
+          <li class="founding-perk"><span class="perk-dot"></span>Input on features before public launch</li>
+        </ul>
+      </div>
+      <div class="founding-cta-card fade-up">
+        <!-- Urgency strip -->
+        <div class="urgency-strip">
+          <div>
+            <div class="urgency-label">⚡ Founding spots filling fast</div>
+            <div style="margin-top:6px;height:4px;background:rgba(255,255,255,0.08);border-radius:2px;width:200px;">
+              <div style="height:100%;width:73%;background:var(--orange);border-radius:2px;"></div>
+            </div>
+          </div>
+          <div class="spots-count">273 / 500 claimed</div>
+        </div>
+        <h3 class="founding-form-title">Claim Your Spot</h3>
+        <p class="founding-form-sub">Pre-register now and we'll be in touch before launch. No commitment required.</p>
+        <button class="btn-primary form-submit" onclick="openModal('creator')">Register as Founding Creator</button>
+        <p class="form-note">Takes 30 seconds. Free to join.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIEWERS -->
+<section id="viewers">
+  <div class="container">
+    <div class="viewers-inner fade-up">
+      <div class="section-label">For Viewers</div>
+      <h2 class="section-headline">You're not here for the platform.<br>You're here for the people.</h2>
+      <p class="section-body">Nobody says "I love this streaming platform." They say "I love watching this creator." That's the difference.</p>
+    </div>
+    <div class="viewers-grid">
+      <div class="viewer-card fade-up">
+        <div class="viewer-card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="11" r="9" stroke="#FF5C00" stroke-width="1.5"/>
+            <path d="M8 11l2 2 4-4" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="viewer-card-label">Show Up</div>
+        <div class="viewer-card-text">Say hi. Drop a GG. Lurk if you want. However you watch, you're part of the community.</div>
+      </div>
+      <div class="viewer-card fade-up">
+        <div class="viewer-card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M4 11c0-3.9 3.1-7 7-7s7 3.1 7 7-3.1 7-7 7H4l2-2" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="viewer-card-label">Stay Connected</div>
+        <div class="viewer-card-text">The best streams don't end. They continue in clips, in memes, in friendships that outlast the broadcast.</div>
+      </div>
+      <div class="viewer-card fade-up">
+        <div class="viewer-card-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <circle cx="11" cy="8" r="3" stroke="#FF5C00" stroke-width="1.5"/>
+            <circle cx="5" cy="15" r="2" stroke="#FF5C00" stroke-width="1.5"/>
+            <circle cx="17" cy="15" r="2" stroke="#FF5C00" stroke-width="1.5"/>
+            <path d="M8 10.5C6.3 11 5 12.4 5 15M14 10.5c1.7.5 3 1.9 3 4.5" stroke="#FF5C00" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="viewer-card-label">Find Your People</div>
+        <div class="viewer-card-text">Discovery that surfaces creators you'll actually love. Not whoever paid to be at the top.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:52px;" class="fade-up">
+      <button class="btn-primary" onclick="openModal('viewer')">Start Watching</button>
+    </div>
+  </div>
+</section>
+
+<!-- ULTRAVERSE ECOSYSTEM -->
+<section id="ultraverse">
+  <div class="uv-glow"></div>
+  <div class="container">
+    <div class="uv-inner fade-up">
+      <div class="section-label">What's Next</div>
+      <h2 class="section-headline">UltraStream is just the beginning.</h2>
+      <p class="uv-desc">We're not building another app. We're building a connected universe where streaming, gaming, and community collide.</p>
+
+      <!-- SVG Ecosystem Diagram -->
+      <svg viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;margin:0 auto;display:block;" class="fade-up">
+        <defs>
+          <radialGradient id="uvGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(255,92,0,0.2)"/>
+            <stop offset="100%" stop-color="rgba(255,92,0,0)"/>
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Background glow -->
+        <ellipse cx="350" cy="210" rx="240" ry="160" fill="url(#uvGlow)" opacity="0.5"/>
+
+        <!-- Connection lines -->
+        <line x1="350" y1="210" x2="180" y2="110" stroke="rgba(255,92,0,0.25)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="350" y1="210" x2="520" y2="110" stroke="rgba(255,92,0,0.25)" stroke-width="1.5" stroke-dasharray="5,4"/>
+        <line x1="350" y1="210" x2="160" y2="310" stroke="rgba(255,92,0,0.15)" stroke-width="1" stroke-dasharray="5,4"/>
+        <line x1="350" y1="210" x2="540" y2="310" stroke="rgba(255,92,0,0.15)" stroke-width="1" stroke-dasharray="5,4"/>
+        <line x1="180" y1="110" x2="520" y2="110" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="160" y1="310" x2="540" y2="310" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+        <!-- CENTRE: Ultraverse -->
+        <circle cx="350" cy="210" r="56" fill="#1A0800" stroke="#FF5C00" stroke-width="2" filter="url(#glow)"/>
+        <circle cx="350" cy="210" r="48" fill="transparent" stroke="rgba(255,92,0,0.2)" stroke-width="1"/>
+        <text x="350" y="204" text-anchor="middle" font-size="10" fill="#FF5C00" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="1">ULTRA</text>
+        <text x="350" y="220" text-anchor="middle" font-size="10" fill="#FF5C00" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="1">VERSE</text>
+        <text x="350" y="234" text-anchor="middle" font-size="8" fill="rgba(255,92,0,0.5)" font-family="sans-serif">ecosystem</text>
+
+        <!-- TOP LEFT: Creator -->
+        <circle cx="180" cy="110" r="44" fill="#1A1A1A" stroke="rgba(255,92,0,0.4)" stroke-width="1.5"/>
+        <text x="180" y="105" text-anchor="middle" font-size="20" font-family="sans-serif">🎙️</text>
+        <text x="180" y="124" text-anchor="middle" font-size="11" fill="white" font-family="Space Grotesk, sans-serif" font-weight="700">Creator</text>
+        <text x="180" y="164" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">Streams live</text>
+        <text x="180" y="176" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">Earns 97%</text>
+
+        <!-- TOP RIGHT: UltraStream -->
+        <circle cx="520" cy="110" r="44" fill="#2A1400" stroke="#FF5C00" stroke-width="1.5"/>
+        <text x="520" y="105" text-anchor="middle" font-size="9" fill="#FF5C00" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="0.5">ULTRA</text>
+        <text x="520" y="118" text-anchor="middle" font-size="9" fill="#FF5C00" font-family="Space Grotesk, sans-serif" font-weight="700" letter-spacing="0.5">STREAM</text>
+        <text x="520" y="164" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">Platform</text>
+        <text x="520" y="176" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">Front door</text>
+
+        <!-- BOTTOM LEFT: Viewer -->
+        <circle cx="160" cy="310" r="44" fill="#1A1A1A" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+        <text x="160" y="305" text-anchor="middle" font-size="20" font-family="sans-serif">👥</text>
+        <text x="160" y="324" text-anchor="middle" font-size="11" fill="white" font-family="Space Grotesk, sans-serif" font-weight="700">Viewer</text>
+        <text x="160" y="365" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">Watches</text>
+        <text x="160" y="377" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">Becomes community</text>
+
+        <!-- BOTTOM RIGHT: Squad Legacy -->
+        <circle cx="540" cy="310" r="44" fill="#1A1A1A" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+        <text x="540" y="305" text-anchor="middle" font-size="20" font-family="sans-serif">🎮</text>
+        <text x="540" y="322" text-anchor="middle" font-size="10" fill="white" font-family="Space Grotesk, sans-serif" font-weight="700">Squad</text>
+        <text x="540" y="334" text-anchor="middle" font-size="10" fill="white" font-family="Space Grotesk, sans-serif" font-weight="700">Legacy</text>
+        <text x="540" y="365" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">AR game</text>
+        <text x="540" y="377" text-anchor="middle" font-size="9" fill="#666666" font-family="sans-serif">Play together IRL</text>
+
+        <!-- Animated dots on lines -->
+        <circle r="4" fill="#FF5C00" opacity="0.8">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M350,210 L180,110"/>
+        </circle>
+        <circle r="4" fill="#FF5C00" opacity="0.8">
+          <animateMotion dur="3.5s" repeatCount="indefinite" path="M350,210 L520,110"/>
+        </circle>
+        <circle r="3" fill="rgba(255,92,0,0.5)">
+          <animateMotion dur="4s" repeatCount="indefinite" path="M350,210 L160,310"/>
+        </circle>
+        <circle r="3" fill="rgba(255,92,0,0.5)">
+          <animateMotion dur="4.5s" repeatCount="indefinite" path="M350,210 L540,310"/>
+        </circle>
+
+        <!-- Today / Soon labels -->
+        <rect x="84" y="82" width="36" height="14" rx="4" fill="#FF5C00"/>
+        <text x="102" y="92" text-anchor="middle" font-size="8" fill="white" font-family="sans-serif" font-weight="700">TODAY</text>
+        <rect x="472" y="82" width="36" height="14" rx="4" fill="#FF5C00"/>
+        <text x="490" y="92" text-anchor="middle" font-size="8" fill="white" font-family="sans-serif" font-weight="700">TODAY</text>
+        <rect x="460" y="282" width="32" height="14" rx="4" fill="#333333"/>
+        <text x="476" y="292" text-anchor="middle" font-size="8" fill="#888888" font-family="sans-serif" font-weight="700">SOON</text>
+      </svg>
+
+      <button class="btn-primary" style="margin-top:48px;" onclick="openModal('creator')">Be Part of It</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ ACCORDION -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-headline">Straight answers.</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-accordion">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <div class="faq-q-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#FF5C00" stroke-width="1.5"/><path d="M9 6v4M9 12v.5" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="faq-q-text">Do I need a big audience?</span>
+          </div>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="#888888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-answer"><p>No. Everyone starts somewhere. UltraStream is built to help you grow from zero, not reward people who are already huge.</p></div>
+      </div>
+
+      <div class="faq-accordion">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <div class="faq-q-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="#FF5C00" stroke-width="1.5"/><path d="M7 8h4M9 7v2" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="faq-q-text">Can I stream different types of content?</span>
+          </div>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="#888888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-answer"><p>Absolutely. Games, podcasts, music, education, IRL. If people love watching it, we want it here.</p></div>
+      </div>
+
+      <div class="faq-accordion">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <div class="faq-q-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#FF5C00" stroke-width="1.5"/><path d="M6 9h6M9 7v4" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="faq-q-text">Do I need new software to stream?</span>
+          </div>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="#888888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-answer"><p>No. Stream using OBS, Ecamm, or any tool you already use via stream key. Upload VODs directly. Zero new workflow.</p></div>
+      </div>
+
+      <div class="faq-accordion">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <div class="faq-q-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#FF5C00" stroke-width="1.5"/><path d="M9 6v3l2 2" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="faq-q-text">When can I join?</span>
+          </div>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="#888888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-answer"><p>The Founding Creator Program opens first. Pre-register above and you'll be among the first through the door at launch.</p></div>
+      </div>
+
+      <div class="faq-accordion">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <div class="faq-q-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2l2 5h5l-4 3 1.5 5L9 12l-4.5 3L6 10 2 7h5L9 2z" stroke="#FF5C00" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <span class="faq-q-text">Is the 97% revenue share permanent?</span>
+          </div>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="#888888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-answer"><p>Yes. It doesn't change based on your follower count, your earnings level, or how long you've been on the platform. 97% is the number.</p></div>
+      </div>
+
+      <div class="faq-accordion">
+        <button class="faq-q-btn" onclick="toggleFaq(this)">
+          <div class="faq-q-inner">
+            <div class="faq-q-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#FF5C00" stroke-width="1.5"/><path d="M6 9h6M9 6v6" stroke="#FF5C00" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span class="faq-q-text">What's the connection to Ultraverse?</span>
+          </div>
+          <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6l5 5 5-5" stroke="#888888" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <div class="faq-answer"><p>UltraStream is the front door. Ultraverse is where things get really interesting. Your community won't just watch you. One day they'll play alongside you.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-inner fade-up">
+    <h2 class="final-headline">Still streaming<br>for the algorithm?</h2>
+    <p class="final-sub">Yeah. We wouldn't either.</p>
+    <button class="btn-primary" style="font-size:18px;padding:20px 52px;" onclick="openModal('creator')">Become a Founding Creator</button>
+    <p class="final-cta-note">No commitment. Free to join. 273 of 500 spots claimed.</p>
+  </div>
+</section>
+
+
+<!-- MODAL OVERLAY -->
+<div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Become a Founding Creator</div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="modal-urgency" id="modal-urgency">273 of 500 Founding spots claimed</div>
+    <div class="modal-iframe-wrap">
+      <iframe id="modal-iframe" src="" title="Sign up form" scrolling="yes"></iframe>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="footer-logo">Ultra<span>Stream</span></div>
+  <ul class="footer-links">
+    <li><a href="#what-you-get">Creators</a></li>
+    <li><a href="#viewers">Viewers</a></li>
+    <li><a href="#ultraverse">Ultraverse</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://discord.gg/BF6YsHQph">Discord</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Kruzer Ultraverse Pty Ltd</div>
+</footer>
+
+<script>
+  // Modal system
+  const FORMS = {
+    creator: {
+      src: 'https://1b961ea8.sibforms.com/serve/MUIFAISslB4G7PWw1rXpKkM7HKkuFw89cQZZv6SLI923fJvNsvXQ1gijO3YtD9DVSoTMjrX9rZjlqsNNGUFB6Nv_2MC-X4CST6YeUtZppWlA6OJCwEJx1Qi8xWCOYDcd8-pYUGSzA_8GpwTrc-5zFUPWHN0Br2lgkMsKk933oJ4nX9BvpJnxZGQOzCri-2-Ybz727e5qQovppQt-RQ==',
+      title: 'Become a Founding Creator',
+      urgency: '⚡ 273 of 500 Founding Creator spots claimed'
+    },
+    viewer: {
+      src: 'https://1b961ea8.sibforms.com/serve/MUIFAIjzoSIN0755GtBeQyi0IyJ1kd37z8XVQUHrjn8FtA4sQhK6Bg69U4X6FdW64dnnh2V1glhWxdNtD0Wg17ukt_xSkCdwMsI8mTzJGXavy0vGQapHUiGxoWoG5jbvlUJkBQ_7YVaznb3JAt7Hw3R4oI_hQPUr2zAYtkqaSCRD8ShBMwHoSLbM_mcu4kItPti832Wj5D__S6RfPw==',
+      title: 'Become a Founding User',
+      urgency: 'Be first through the door when we launch'
+    }
+  };
+
+  function openModal(type) {
+    const cfg = FORMS[type];
+    document.getElementById('modal-title').textContent = cfg.title;
+    document.getElementById('modal-urgency').textContent = cfg.urgency;
+    document.getElementById('modal-iframe').src = cfg.src;
+    document.getElementById('modal-overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('active');
+    document.getElementById('modal-iframe').src = '';
+    document.body.style.overflow = '';
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modal-overlay')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  // Stagger grids
+  document.querySelectorAll('.features-grid, .viewers-grid, .pain-list, .founding-perks').forEach(grid => {
+    grid.querySelectorAll('.fade-up').forEach((el, i) => { el.style.transitionDelay = `${i * 90}ms`; });
+  });
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const acc = btn.closest('.faq-accordion');
+    const isOpen = acc.classList.contains('open');
+    document.querySelectorAll('.faq-accordion.open').forEach(a => a.classList.remove('open'));
+    if (!isOpen) acc.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
+
