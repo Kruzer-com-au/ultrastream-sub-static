@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G2GLYXRX31"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G2GLYXRX31');
+</script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2069378886946835');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — UltraStream</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --surface: #111111;
+    --surface-2: #1A1A1A;
+    --surface-3: #222222;
+    --white: #FFFFFF;
+    --orange: #FF5C00;
+    --orange-dim: rgba(255,92,0,0.12);
+    --orange-glow: rgba(255,92,0,0.4);
+    --red: #8B0000;
+    --grey: #555555;
+    --grey-light: #888888;
+    --border: rgba(255,255,255,0.07);
+    --border-orange: rgba(255,92,0,0.25);
+    --body-text: rgba(255,255,255,0.82);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--orange); }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px;
+    letter-spacing: -0.02em; color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links li { display: flex; align-items: center; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--grey-light);
+    text-decoration: none; transition: color 0.2s;
+    display: inline-flex; align-items: center;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a.current { color: var(--white); }
+  .nav-links a.nav-cta, .nav-cta {
+    display: inline-flex; align-items: center; justify-content: center; line-height: 1;
+    background: var(--orange) !important; color: #FFFFFF !important;
+    padding: 10px 22px; border-radius: 6px; font-weight: 600 !important;
+    font-size: 14px !important; text-decoration: none !important;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .nav-links a.nav-cta:hover, .nav-cta:hover { background: #e05200 !important; color: #FFFFFF !important; box-shadow: 0 0 24px var(--orange-glow) !important; }
+
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+
+  #legal-hero {
+    padding: 160px 48px 64px;
+    max-width: 1160px; margin: 0 auto;
+    position: relative; overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,92,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,92,0,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 100% 100% at 30% 30%, black 20%, transparent 80%);
+    pointer-events: none;
+  }
+  .legal-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 24px; padding: 7px 14px;
+    border: 1px solid rgba(255,92,0,0.3); border-radius: 100px;
+    background: rgba(255,92,0,0.07);
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--orange);
+    animation: blink 2s ease infinite;
+  }
+  @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+  .legal-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 700; line-height: 1.02; letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+  .legal-headline .accent { color: var(--orange); }
+  .legal-dek { font-size: 17px; color: var(--grey-light); line-height: 1.65; max-width: 560px; margin-bottom: 36px; }
+  .meta-strip { display: flex; gap: 40px; padding-top: 28px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .meta-item { text-align: left; }
+  .meta-item-value { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; display: block; color: var(--white); }
+  .meta-item-label { font-size: 11px; color: var(--grey-light); text-transform: uppercase; letter-spacing: 0.08em; display: block; margin-top: 3px; }
+
+  .layout {
+    max-width: 1160px; margin: 0 auto; padding: 0 48px 140px;
+    display: grid; grid-template-columns: 268px 1fr; gap: 64px;
+  }
+  .chapters-card {
+    position: sticky; top: 96px; align-self: start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 24px;
+    max-height: calc(100vh - 130px); overflow-y: auto;
+  }
+  .chapters-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 18px;
+  }
+  .chapters-card ol { list-style: none; }
+  .chapters-card a {
+    display: flex; gap: 10px; align-items: baseline;
+    text-decoration: none; color: var(--grey-light);
+    padding: 8px 0 8px 14px; font-size: 13.5px; line-height: 1.35;
+    border-left: 2px solid transparent; margin-left: -1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .chapters-card a:hover { color: var(--white); }
+  .chapters-card a.active { color: var(--white); border-left: 2px solid var(--orange); font-weight: 600; }
+  .chapters-card .tc { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--orange); flex-shrink: 0; opacity: .85; }
+
+  main.doc { min-width: 0; max-width: 700px; }
+  .doc-section { padding-top: 52px; margin-top: 52px; border-top: 1px solid var(--border); }
+  .doc-section:first-of-type { border-top: none; margin-top: 8px; padding-top: 0; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 10px;
+  }
+  .doc-section h2 {
+    font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 18px; line-height: 1.15;
+  }
+  .doc-section h3 {
+    font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 600;
+    letter-spacing: -0.01em; margin: 28px 0 10px;
+  }
+  .doc-section h4 {
+    font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600;
+    letter-spacing: -0.005em; margin: 0 0 10px; color: var(--white);
+  }
+  .doc-section p { color: var(--body-text); margin-bottom: 15px; font-size: 15.5px; line-height: 1.75; }
+  .doc-section ul { margin: 0 0 18px; padding-left: 0; list-style: none; }
+  .doc-section li {
+    position: relative; padding-left: 22px; margin-bottom: 10px;
+    color: var(--body-text); font-size: 15.5px; line-height: 1.65;
+  }
+  .doc-section li::before {
+    content: ''; position: absolute; left: 0; top: 9px;
+    width: 6px; height: 6px; border-radius: 50%; background: var(--orange);
+  }
+  .doc-section a { color: var(--orange); }
+
+  .callout {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-left: 3px solid var(--orange); border-radius: 12px;
+    padding: 18px 22px; margin: 20px 0;
+  }
+  .callout p { margin-bottom: 0; font-size: 15px; color: var(--body-text); }
+
+  .subsection {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 26px; margin: 18px 0;
+  }
+  .subsection h4 { margin-top: 0; }
+  .subsection p:last-child, .subsection ul:last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 18px 0; border-radius: 12px; border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--surface-2); }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { font-family: 'Space Grotesk', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); background: var(--surface-3); font-weight: 700; }
+  td { color: var(--body-text); }
+  tr:last-child td { border-bottom: none; }
+
+  footer {
+    padding: 40px 48px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--surface); flex-wrap: wrap; gap: 20px;
+  }
+  .footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); text-decoration: none; }
+  .footer-logo span { color: var(--orange); }
+  .footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: var(--grey-light); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-links a.current { color: var(--orange); }
+  .footer-copy { font-size: 12px; color: var(--grey); }
+
+  @media (max-width: 960px) {
+    nav { padding: 16px 24px; }
+    .nav-links li:not(:last-child) { display: none; }
+    .container, .layout { padding-left: 24px; padding-right: 24px; }
+    #legal-hero { padding: 120px 24px 48px; }
+    .layout { grid-template-columns: 1fr; gap: 32px; }
+    .chapters-card { position: static; max-height: none; }
+    footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .footer-links { justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-eyebrow::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="./index.html" class="nav-logo">Ultra<span>Stream</span></a>
+  <ul class="nav-links">
+    <li><a href="./terms-and-conditions.html">Terms</a></li>
+    <li><a href="./privacy-policy.html" class="current">Privacy</a></li>
+    <li><a href="./community-guidelines.html">Community Guidelines</a></li>
+    <li><a href="./index.html" class="nav-cta">Back to UltraStream</a></li>
+  </ul>
+</nav>
+
+<div id="legal-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="legal-hero-inner">
+    <div class="hero-eyebrow">In effect from 1 August 2026</div>
+    <h1 class="legal-headline">Privacy <span class="accent">Policy</span></h1>
+    <p class="legal-dek">How Kruzer Ultraverse collects, uses, discloses, stores, and safeguards personal information through the UltraStream app, and the rights you have over that information.</p>
+    <div class="meta-strip">
+      <div class="meta-item"><span class="meta-item-value">iOS &amp; Android</span><span class="meta-item-label">Applies to</span></div>
+      <div class="meta-item"><span class="meta-item-value">1 August 2026</span><span class="meta-item-label">Effective date</span></div>
+      <div class="meta-item"><span class="meta-item-value">1 August 2026</span><span class="meta-item-label">Last updated</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <aside class="chapters-card">
+    <p class="chapters-label">Chapters</p>
+    <ol id="chapter-list">
+      <li><a href="#s1"><span class="tc">01</span>Introduction</a></li>
+      <li><a href="#s2"><span class="tc">02</span>Who we are</a></li>
+      <li><a href="#s3"><span class="tc">03</span>Scope</a></li>
+      <li><a href="#s4"><span class="tc">04</span>Info we collect</a></li>
+      <li><a href="#s5"><span class="tc">05</span>How we collect it</a></li>
+      <li><a href="#s6"><span class="tc">06</span>Why we use it</a></li>
+      <li><a href="#s7"><span class="tc">07</span>Cookies &amp; tracking</a></li>
+      <li><a href="#s8"><span class="tc">08</span>Disclosure</a></li>
+      <li><a href="#s9"><span class="tc">09</span>International transfers</a></li>
+      <li><a href="#s10"><span class="tc">10</span>Marketing</a></li>
+      <li><a href="#s11"><span class="tc">11</span>Data security</a></li>
+      <li><a href="#s12"><span class="tc">12</span>Data retention</a></li>
+      <li><a href="#s13"><span class="tc">13</span>Your rights</a></li>
+      <li><a href="#s14"><span class="tc">14</span>Children's privacy</a></li>
+      <li><a href="#s15"><span class="tc">15</span>Automated decisions</a></li>
+      <li><a href="#s16"><span class="tc">16</span>Third-party links</a></li>
+      <li><a href="#s17"><span class="tc">17</span>Changes to this Policy</a></li>
+      <li><a href="#s18"><span class="tc">18</span>Contact us</a></li>
+    </ol>
+  </aside>
+
+  <main class="doc">
+
+    <section class="doc-section" id="s1">
+      <p class="section-label">01 · Overview</p>
+      <h2>Introduction</h2>
+      <p>Kruzer Ultraverse ("we", "us", or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, store, and safeguard personal information through the UltraStream mobile application (the "App"), and the rights you have in relation to that information.</p>
+      <p>This policy is designed to meet the requirements of the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs), the EU General Data Protection Regulation (GDPR), the UK GDPR, the California Consumer Privacy Act as amended by the CPRA (CCPA/CPRA), applicable app store requirements (Apple App Store and Google Play), and applicable global privacy laws and best practice. Where local laws apply to you, the rights and protections in those laws are in addition to the general protections set out in this policy.</p>
+      <p>By downloading, installing, registering for an account on, or otherwise using the App, you acknowledge that you have read and understood this Privacy Policy.</p>
+      <p>This policy is a companion to the Kruzer Ultraverse website Privacy Policy. Where you also use our websites, that policy applies to your use of the websites.</p>
+      <div class="callout"><p>Some features described in this policy, including age verification and reward checkout, are being progressively rolled out and may not yet be fully active for all users. Where a feature is not yet active, we do not process the related personal information until it goes live.</p></div>
+    </section>
+
+    <section class="doc-section" id="s2">
+      <p class="section-label">02 · Controller</p>
+      <h2>Who we are</h2>
+      <p>Kruzer Ultraverse is the operator of the App and acts as the "data controller" (under GDPR/UK GDPR), "APP entity" (under the Australian Privacy Act), and "business" (under the CCPA/CPRA) responsible for your personal information.</p>
+      <p>For any privacy-related questions, requests, or complaints, please contact:</p>
+      <ul>
+        <li>Privacy contact: <a href="mailto:admin@kruzer.com.au">admin@kruzer.com.au</a></li>
+        <li>Postal address: Kruzer Ultraverse Pty Ltd (ABN 62 686 962 783), Level 13, 60 Castlereagh Street, Sydney NSW 2000, Australia</li>
+      </ul>
+      <p>If you are in the EU or UK and require an Article 27 representative, please contact us at the address above and we will provide current details.</p>
+    </section>
+
+    <section class="doc-section" id="s3">
+      <p class="section-label">03 · Scope</p>
+      <h2>Scope</h2>
+      <p>This Privacy Policy applies to the UltraStream mobile application and the services accessed through it, including creating an account, live streaming, viewing streams, chatting, participating in the Founding Creator Programme, and receiving creator payouts. It does not apply to third-party websites or services linked from or integrated with the App; those third parties have their own privacy policies which we encourage you to review.</p>
+    </section>
+
+    <section class="doc-section" id="s4">
+      <p class="section-label">04 · Collection</p>
+      <h2>Personal information we collect</h2>
+      <p>We collect personal information in the following categories:</p>
+
+      <div class="subsection">
+        <h4>4.1 Account and profile information</h4>
+        <p>When you create an account or sign in to the App, we collect information such as:</p>
+        <ul>
+          <li>Your name, display name or username, and custom handle</li>
+          <li>Email address</li>
+          <li>Password (stored in hashed form: we never store plain-text passwords)</li>
+          <li>Where you sign up or sign in via Google or Apple, the identifier and basic profile information (such as name and email) shared with us by that provider</li>
+          <li>Profile information you choose to provide, such as a profile picture or bio</li>
+          <li>Account preferences and settings</li>
+          <li>Authentication metadata (for example, sign-in timestamps, IP address used to sign in, and approximate location derived from IP for security purposes)</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h4>4.2 Age verification</h4>
+        <p>To determine which content is appropriate to show you, the App uses a video-based age verification process provided by our third-party verification partner, Yoti. Where this feature is active:</p>
+        <ul>
+          <li>Yoti processes a short video or image of you to estimate your age. This is biometric information.</li>
+          <li>Kruzer Ultraverse receives an age tier or age confirmation result from Yoti, not the underlying video or image itself, which is handled directly by Yoti in accordance with its own privacy policy and retention practices</li>
+          <li>The age tier is used to determine which content categories are visible to your account.</li>
+        </ul>
+        <p>We rely on your explicit consent to carry out age estimation, which is a form of biometric processing. You may withdraw consent at any time, and we offer an alternative age-verification method where estimation is unavailable or declined. We complete a Data Protection Impact Assessment before this feature is enabled.</p>
+        <p>This feature is in development and not yet enforced in the current release.</p>
+      </div>
+
+      <div class="subsection">
+        <h4>4.3 Creator payout, purchases, and financial information</h4>
+        <p>If you join the App as a creator and are eligible for revenue share, we (and our payment processor, Stripe) collect information necessary to verify your identity and pay you, including:</p>
+        <ul>
+          <li>Full legal name and date of birth</li>
+          <li>Bank account or payout details</li>
+          <li>Tax information (for example, a tax file number or equivalent, as required by law)</li>
+          <li>Identity verification documents required by Stripe for Know Your Customer (KYC) checks</li>
+          <li>Earnings, payout history, and referral or competition activity relevant to the Founding Creator Programme</li>
+        </ul>
+        <p>If you reward a creator using Squad Legacy items, we (and Stripe) also collect information needed to process that purchase, including:</p>
+        <ul>
+          <li>Payment details processed by Stripe at checkout</li>
+          <li>A record of the items and quantities purchased, and the creator rewarded</li>
+          <li>Your contribution and transaction history, visible to you in the App's Transaction Log</li>
+        </ul>
+        <p>Payment card and full bank account details are collected and stored by Stripe on our behalf. We do not store full card numbers or full bank account numbers ourselves.</p>
+        <p>Reward checkout via Stripe is in development and not yet processable end-to-end in the current release.</p>
+      </div>
+
+      <div class="subsection">
+        <h4>4.4 Device permissions and device information</h4>
+        <p>To provide live streaming, the App requests access to certain device features. We only access these when needed to provide the relevant functionality, and you can manage permissions at any time through your device settings:</p>
+        <ul>
+          <li>Camera: to capture and broadcast your live video stream</li>
+          <li>Microphone: to capture and broadcast your live audio</li>
+          <li>Photo/video library: where you choose to upload a profile picture, thumbnail, or pre-recorded clip</li>
+          <li>Push notification token: to send you alerts about your stream, followers, and account activity</li>
+          <li>Device identifiers, operating system, app version, and crash/diagnostic data: to keep the App secure and working properly</li>
+        </ul>
+        <p>If you do not grant camera or microphone permission, you will not be able to broadcast a live stream, but you can still use other parts of the App.</p>
+      </div>
+
+      <div class="subsection">
+        <h4>4.5 Streaming content and activity</h4>
+        <p>When you use the App to stream, watch, or interact with content, we collect:</p>
+        <ul>
+          <li>Your live video and audio stream while broadcasting, and any short-form or uploaded video content</li>
+          <li>Chat messages, comments, likes, dislikes, and reactions you post</li>
+          <li>Follows, subscriptions, and other interactions with creators and viewers</li>
+          <li>Watch history, including videos, Shorts, and live content you view. You can pause watch history tracking or clear your watch history at any time in the App</li>
+        </ul>
+        <p>Live streams may be recorded and stored so they can be replayed as video-on-demand where you enable that option. You can delete your recordings at any time in the App. We keep recordings while published and for up to 30 days after removal, unless we must retain them longer to investigate a report or comply with law. Creators can choose not to store recordings in stream settings.</p>
+      </div>
+
+      <div class="subsection">
+        <h4>4.6 App analytics and technical information</h4>
+        <p>When you use the App, we and our analytics providers automatically collect certain technical information, including:</p>
+        <ul>
+          <li>IP address and approximate geographic location</li>
+          <li>Device type, operating system, and app version</li>
+          <li>Pages/screens viewed and features used within the App</li>
+          <li>Date, time, and duration of sessions</li>
+          <li>Clickstream and in-app interaction data</li>
+        </ul>
+        <p>This information is collected using reputable third-party analytics, crash-reporting, and content-delivery providers, who are contractually required to handle it consistently with this policy.</p>
+      </div>
+
+      <div class="subsection">
+        <h4>4.7 Support, contact forms, and communications</h4>
+        <p>When you contact us through in-app support, a contact form, or otherwise communicate with us, we collect:</p>
+        <ul>
+          <li>Your name and email address</li>
+          <li>Any other information you choose to include in your message</li>
+          <li>Subscription preferences and email engagement data, if you sign up to receive updates</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <h4>4.8 Information we do not knowingly collect</h4>
+        <p>Other than the age-verification biometric processing described in Section 4.2 above, we do not knowingly collect "sensitive information" (as defined under the Australian Privacy Act) or "special category" data (as defined under the GDPR), such as health information, racial or ethnic origin, religious beliefs, political opinions, or sexual orientation, unless you voluntarily provide it (for example, in a support message) and it is necessary for the purpose of your enquiry.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="s5">
+      <p class="section-label">05 · Sources</p>
+      <h2>How we collect personal information</h2>
+      <ul>
+        <li>Directly from you, when you register, log in, set up creator payouts, stream, chat, or otherwise interact with the App</li>
+        <li>Automatically, through device permissions, app analytics, and diagnostic tools when you use the App</li>
+        <li>From third-party service providers, such as Stripe (payments), authentication providers, analytics platforms, and referral/competition tracking tools, in accordance with their own privacy policies</li>
+      </ul>
+    </section>
+
+    <section class="doc-section" id="s6">
+      <p class="section-label">06 · Purpose</p>
+      <h2>Why we use your personal information</h2>
+      <p>We use personal information to:</p>
+      <ul>
+        <li>Create and manage your account and authenticate you</li>
+        <li>Provide live streaming, chat, and viewing functionality</li>
+        <li>Verify your age and determine which content categories are appropriate to show you</li>
+        <li>Process reward purchases and calculate, process, and pay creator revenue share through Stripe</li>
+        <li>Run the Founding Creator Programme, including referral tracking and eligible competitions</li>
+        <li>Operate, maintain, and improve the App, including troubleshooting and security</li>
+        <li>Communicate with you about your account, support requests, and (where you have opted in) marketing updates</li>
+        <li>Comply with legal, tax, and regulatory obligations, including identity verification for payouts</li>
+      </ul>
+      <p>We will not use your personal information for a purpose materially different from the purpose for which it was collected without first notifying you and, where required, obtaining your consent.</p>
+      <p>Where the GDPR or UK GDPR applies, our lawful bases are: performance of our contract with you (account, streaming, payouts); your consent (age estimation, optional marketing, non-essential tracking); our legitimate interests (security, product improvement, fraud prevention), balanced against your rights; and compliance with legal obligations (tax, KYC/AML, safety). You can withdraw consent at any time where we rely on it.</p>
+    </section>
+
+    <section class="doc-section" id="s7">
+      <p class="section-label">07 · Tracking</p>
+      <h2>Cookies and tracking technologies</h2>
+      <p>The App uses device identifiers, SDKs, and similar technologies (rather than browser cookies) to make the App work, remember your preferences, and understand how the App is used.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Category</th><th>Purpose</th></tr>
+          <tr><td>Strictly necessary</td><td>Required to operate the App, including session and authentication tokens. These do not require separate consent.</td></tr>
+          <tr><td>Functional</td><td>Remember your preferences, such as display settings.</td></tr>
+          <tr><td>Analytics</td><td>Help us understand App usage in aggregate so we can improve it.</td></tr>
+          <tr><td>Marketing</td><td>Used in limited circumstances to measure the effectiveness of campaigns, if and where deployed.</td></tr>
+        </table>
+      </div>
+      <p>Where required by law, we will request your consent before using non-essential tracking technologies. You can manage permissions such as advertising identifiers through your device settings. Disabling certain technologies may affect App functionality.</p>
+    </section>
+
+    <section class="doc-section" id="s8">
+      <p class="section-label">08 · Sharing</p>
+      <h2>Disclosure of personal information</h2>
+      <p>We may disclose personal information to:</p>
+      <ul>
+        <li>Stripe, to process creator payouts, reward purchases, and carry out identity verification</li>
+        <li>Yoti, to carry out video-based age verification (once this feature is active)</li>
+        <li>Google and Apple, where you choose to sign up or sign in using those providers</li>
+        <li>Service providers who help us operate the App, including hosting, streaming infrastructure, authentication, analytics, push notifications, customer support tools, and security providers. These providers are contractually required to handle personal information only as instructed by us and consistent with this policy.</li>
+        <li>Referral and competition tracking tools used for the Founding Creator Programme</li>
+        <li>Professional advisers such as legal counsel, accountants, and auditors, where necessary</li>
+        <li>Government authorities and regulators, where we are required by law, court order, or to protect our or others' rights, safety, or property</li>
+        <li>A successor entity in connection with a merger, acquisition, restructuring, or sale of all or part of our business, subject to the recipient committing to protect personal information in a manner consistent with this policy</li>
+      </ul>
+      <p>We do not sell your personal information, and we do not share it for cross-context behavioural advertising as those terms are defined under the CCPA/CPRA. We will update this policy and provide a "Do Not Sell or Share My Personal Information" control if that ever changes.</p>
+    </section>
+
+    <section class="doc-section" id="s9">
+      <p class="section-label">09 · Transfers</p>
+      <h2>International data transfers</h2>
+      <p>We are based in Australia. Some of our service providers, including Stripe, may store or process personal information outside your country of residence, including in the United States, the European Union, the United Kingdom, and other jurisdictions.</p>
+      <p>Where personal information of EU or UK residents is transferred outside the EEA or UK to a country that has not been recognised as providing an adequate level of protection, we rely on appropriate safeguards such as the European Commission's Standard Contractual Clauses (and the UK Addendum where applicable), or another lawful transfer mechanism. A copy of the safeguards can be requested at the contact details in Section 2.</p>
+      <p>By using the App, you understand and acknowledge that your personal information may be transferred to and processed in countries other than your own.</p>
+    </section>
+
+    <section class="doc-section" id="s10">
+      <p class="section-label">10 · Marketing</p>
+      <h2>Marketing communications</h2>
+      <p>If you have opted in to receive updates from us, we will use the email address and preferences you provided to send you those communications.</p>
+      <p>You can unsubscribe at any time by following the link in any marketing email, adjusting your notification settings in the App, or contacting us at <a href="mailto:admin@kruzer.com.au">admin@kruzer.com.au</a>. Unsubscribing from marketing communications does not affect transactional or service-related communications, such as account security notices, payout confirmations, or important changes to the App or these terms.</p>
+    </section>
+
+    <section class="doc-section" id="s11">
+      <p class="section-label">11 · Security</p>
+      <h2>Data security</h2>
+      <p>We implement reasonable technical and organisational security measures designed to protect personal information from unauthorised access, disclosure, alteration, or destruction, including:</p>
+      <ul>
+        <li>Encryption of data in transit (TLS) and at rest where appropriate</li>
+        <li>Hashing of passwords using industry-standard algorithms</li>
+        <li>Payment and identity verification data handled by Stripe under its own PCI-compliant security standards</li>
+        <li>Access controls and authentication requirements for our personnel</li>
+        <li>Regular review of our security practices and service providers</li>
+      </ul>
+      <p>No method of transmission over the internet or electronic storage is completely secure. While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee absolute security. If you believe your account or information has been compromised, please contact us immediately.</p>
+      <p>If a data breach is likely to result in serious harm, we will notify affected individuals and the Office of the Australian Information Commissioner as required by the Notifiable Data Breaches scheme, and other regulators where applicable.</p>
+    </section>
+
+    <section class="doc-section" id="s12">
+      <p class="section-label">12 · Retention</p>
+      <h2>Data retention</h2>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Data</th><th>Retention period</th></tr>
+          <tr><td>Account information</td><td>For the life of the account plus up to 24 months</td></tr>
+          <tr><td>Creator payout, tax, and KYC records</td><td>7 years after the last payout, to meet tax and anti-money-laundering obligations</td></tr>
+          <tr><td>Live-stream recordings</td><td>While published and for up to 30 days after removal (see Section 4.5)</td></tr>
+          <tr><td>Chat messages</td><td>Up to 12 months</td></tr>
+          <tr><td>Support and contact submissions</td><td>Up to 24 months</td></tr>
+          <tr><td>Analytics and diagnostic data</td><td>Identifiable for up to 14 months, then aggregated or deleted</td></tr>
+        </table>
+      </div>
+      <p>When personal information is no longer required, we will securely delete or de-identify it.</p>
+    </section>
+
+    <section class="doc-section" id="s13">
+      <p class="section-label">13 · Your rights</p>
+      <h2>Your privacy rights</h2>
+      <p>Subject to the laws that apply to you, you may have the following rights in relation to your personal information:</p>
+      <ul>
+        <li>Access: request a copy of the personal information we hold about you</li>
+        <li>Correction / rectification: ask us to correct information that is inaccurate or out of date</li>
+        <li>Deletion / erasure: ask us to delete personal information in certain circumstances</li>
+        <li>Restriction / objection: ask us to restrict or object to certain processing</li>
+        <li>Data portability: request a copy of certain personal information in a machine-readable format</li>
+        <li>Withdraw consent: withdraw consent at any time where we rely on consent (this does not affect the lawfulness of processing before withdrawal)</li>
+        <li>Opt out of marketing: opt out of receiving marketing communications at any time</li>
+        <li>Opt out of "sale" or "sharing": under the CCPA/CPRA. We do not sell or share personal information as defined under that law, but if this changes we will provide a "Do Not Sell or Share My Personal Information" option</li>
+        <li>Non-discrimination: exercise your rights without being discriminated against for doing so</li>
+        <li>Watch history controls: you can pause watch history tracking or clear your watch history at any time in the App, under Profile</li>
+      </ul>
+      <p>Some information, such as payout and tax records, may need to be retained even after a deletion request in order to meet our legal obligations.</p>
+      <p>To exercise any of these rights, please contact us at <a href="mailto:admin@kruzer.com.au">admin@kruzer.com.au</a>. We may need to verify your identity before responding. We will respond within the timeframes required by applicable law (typically within 30 days under the GDPR/UK GDPR; 45 days under the CCPA/CPRA, with the possibility of an extension).</p>
+      <p>If you are not satisfied with our response, you have the right to lodge a complaint with a supervisory authority:</p>
+      <ul>
+        <li>Australia: the Office of the Australian Information Commissioner (OAIC): <a href="https://oaic.gov.au" target="_blank" rel="noopener noreferrer">oaic.gov.au</a></li>
+        <li>EU: your local Data Protection Authority</li>
+        <li>UK: the Information Commissioner's Office (ICO): <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a></li>
+        <li>California: the California Privacy Protection Agency or the California Attorney General</li>
+      </ul>
+      <p>We would, however, appreciate the chance to address your concerns first.</p>
+    </section>
+
+    <section class="doc-section" id="s14">
+      <p class="section-label">14 · Minors</p>
+      <h2>Children's privacy</h2>
+      <p>The App is not directed to children under the age of 18, and we do not knowingly collect personal information from children under 18. If you believe that a child has provided us with personal information, please contact us at <a href="mailto:admin@kruzer.com.au">admin@kruzer.com.au</a> and we will take steps to delete that information.</p>
+      <p>While Viewers must be at least 18, Creators who receive payouts must be at least 18. We do not knowingly enable payouts to anyone under 18.</p>
+    </section>
+
+    <section class="doc-section" id="s15">
+      <p class="section-label">15 · Automation</p>
+      <h2>Automated decision-making</h2>
+      <p>We use automated tools to help verify age, recommend content, and detect content or conduct that may breach our Terms or the law. These tools support human review; we do not make decisions producing legal or similarly significant effects on you based solely on automated processing without a route to human review. Where a moderation or account decision significantly affects you, for example removing content or restricting payouts, you can ask us to review it at <a href="mailto:admin@kruzer.com.au">admin@kruzer.com.au</a>.</p>
+    </section>
+
+    <section class="doc-section" id="s16">
+      <p class="section-label">16 · Third parties</p>
+      <h2>Third-party links and integrations</h2>
+      <p>The App may contain links to third-party websites, plug-ins, or services, or integrate with third-party tools such as Stripe for payouts. Clicking on those links or using those integrations may allow third parties to collect or share data about you. We do not control these third parties and are not responsible for their privacy practices. We encourage you to read the privacy policy of every third-party service you use.</p>
+    </section>
+
+    <section class="doc-section" id="s17">
+      <p class="section-label">17 · Updates</p>
+      <h2>Changes to this Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date at the top of this policy. If we make a change that materially and adversely affects your rights, we will give you reasonable advance notice, for example by email or an in-app notification, before it takes effect, and will seek your consent where required by law. If you do not agree to a material change, you may stop using the App and close your account before it takes effect.</p>
+    </section>
+
+    <section class="doc-section" id="s18">
+      <p class="section-label">18 · Contact</p>
+      <h2>Contact us</h2>
+      <p>If you have any questions, concerns, or requests about this Privacy Policy or our handling of your personal information, please contact us:</p>
+      <ul>
+        <li>Email: <a href="mailto:admin@kruzer.com.au">admin@kruzer.com.au</a></li>
+        <li>Postal: Kruzer Ultraverse Pty Ltd (ABN 62 686 962 783), Level 13, 60 Castlereagh Street, Sydney NSW 2000, Australia</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <a href="./index.html" class="footer-logo">Ultra<span>Stream</span></a>
+  <ul class="footer-links">
+    <li><a href="./index.html#what-you-get">Creators</a></li>
+    <li><a href="./index.html#viewers">Viewers</a></li>
+    <li><a href="./index.html#ultraverse">Ultraverse</a></li>
+    <li><a href="./terms-and-conditions.html">Terms</a></li>
+    <li><a href="./privacy-policy.html" class="current">Privacy</a></li>
+    <li><a href="./community-guidelines.html">Community Guidelines</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Kruzer Ultraverse Pty Ltd</div>
+</footer>
+
+<script>
+  const links = document.querySelectorAll('.chapters-card a');
+  const sections = document.querySelectorAll('main.doc .doc-section');
+  const map = new Map();
+  links.forEach(l => map.set(l.getAttribute('href').slice(1), l));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const link = map.get(e.target.id);
+      if(!link) return;
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, {rootMargin: '-15% 0px -70% 0px'});
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
