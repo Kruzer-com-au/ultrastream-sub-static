@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome, Founding Creator — UltraStream</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Tapfiliate conversion trigger — fires once per load of this thank-you page -->
+<script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+<script type="text/javascript">
+  (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+  tap('create', '64328-85f17a', { integration: "javascript" });
+  tap('conversion');
+</script>
+<style>
+  /*
+    OPEN ITEMS — flagged for Shari, not invented:
+    1. "Create" and "Invite" missions are not shown on this page for now, since
+       neither is set up yet. Add them back in once ready (markup left below,
+       commented out, for easy reinstatement).
+    2. "Show up" — no sample caption or hashtag has been supplied yet. Copy
+       currently asks creators to tag @ultrastream.kruzer and mention UltraStream;
+       swap in the official hashtag once confirmed.
+  */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0A0A0A;
+    --surface: #111111;
+    --surface-2: #1A1A1A;
+    --surface-3: #222222;
+    --white: #FFFFFF;
+    --orange: #FF5C00;
+    --orange-dim: rgba(255,92,0,0.12);
+    --orange-glow: rgba(255,92,0,0.4);
+    --grey: #555555;
+    --grey-light: #888888;
+    --border: rgba(255,255,255,0.07);
+    --border-orange: rgba(255,92,0,0.25);
+    --body-text: rgba(255,255,255,0.82);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--orange); }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px;
+    letter-spacing: -0.02em; color: var(--white); text-decoration: none;
+  }
+  .nav-logo span { color: var(--orange); }
+
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+
+  /* HERO */
+  #hero {
+    padding: 168px 48px 72px;
+    max-width: 900px; margin: 0 auto;
+    position: relative; overflow: visible;
+    text-align: center;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,92,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,92,0,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 90% 90% at 50% 20%, black 20%, transparent 80%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--orange);
+    margin-bottom: 24px; padding: 7px 14px;
+    border: 1px solid rgba(255,92,0,0.3); border-radius: 100px;
+    background: rgba(255,92,0,0.07);
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--orange);
+    animation: blink 2s ease infinite;
+  }
+  @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+  .hero-headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 700; line-height: 1.02; letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  .hero-headline .accent { color: var(--orange); }
+  .hero-dek { font-size: 18px; color: var(--grey-light); line-height: 1.65; max-width: 620px; margin: 0 auto 40px; }
+
+  /* SIGNAL GRAPHIC */
+  .signal {
+    position: relative; width: 120px; height: 120px; margin: 0 auto 28px;
+  }
+  .signal-ring {
+    position: absolute; inset: 0; border: 1.5px solid var(--orange);
+    border-radius: 50%; opacity: 0;
+    animation: pulse 3s ease-out infinite;
+  }
+  .signal-ring:nth-child(2) { animation-delay: 1s; }
+  .signal-ring:nth-child(3) { animation-delay: 2s; }
+  @keyframes pulse {
+    0% { transform: scale(0.35); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+  .signal-core {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  }
+  .signal-core svg { width: 40px; height: 40px; }
+
+  /* STAT STRIP */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border); border-radius: 16px;
+    overflow: hidden; margin-bottom: 8px;
+  }
+  .stat-cell {
+    background: var(--surface); padding: 26px 20px; text-align: center;
+  }
+  .stat-value {
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--white);
+  }
+  .stat-value .o { color: var(--orange); }
+  .stat-label {
+    font-size: 11px; color: var(--grey-light); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-top: 6px;
+  }
+
+  /* MISSION EXPLAINER CALLOUT */
+  .explainer {
+    max-width: 900px; margin: 56px auto 0; padding: 0 48px;
+  }
+  .explainer-card {
+    background: var(--surface); border: 1px solid var(--border-orange);
+    border-radius: 16px; padding: 28px 32px;
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+  .explainer-mark {
+    width: 44px; height: 44px; flex-shrink: 0;
+    border-radius: 10px; background: var(--orange-dim);
+    border: 1px solid var(--border-orange);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .explainer-mark svg { width: 22px; height: 22px; }
+  .explainer-card p { font-size: 15px; color: var(--body-text); }
+  .explainer-card strong { color: var(--white); }
+
+  /* PROGRESS TRACKER */
+  .progress-wrap {
+    max-width: 760px; margin: 40px auto 0; padding: 0 48px;
+  }
+  .progress-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .progress-label { font-size: 12.5px; color: var(--grey-light); text-transform: uppercase; letter-spacing: 0.08em; }
+  .progress-count { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--white); }
+  .progress-count .o { color: var(--orange); }
+  .progress-track {
+    height: 8px; border-radius: 100px; background: var(--surface-2);
+    border: 1px solid var(--border); overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; width: 0%; border-radius: 100px;
+    background: linear-gradient(90deg, var(--orange), #ff8a4d);
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 0 12px var(--orange-glow);
+  }
+
+  /* MISSION DONE STATE */
+  .mission-icon { position: relative; }
+  .mission-check {
+    position: absolute; inset: 0; border-radius: 10px;
+    background: var(--orange); display: flex; align-items: center; justify-content: center;
+    opacity: 0; transform: scale(0.6); pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .mission-check svg { width: 22px; height: 22px; }
+  .mission-card.done .mission-check { opacity: 1; transform: scale(1); }
+  .mission-card.done .mission-icon > svg { opacity: 0; }
+  .mission-card.done { border-color: var(--border-orange); }
+  .mission-done-tag {
+    display: block; text-align: center;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--orange); opacity: 0; height: 0; overflow: hidden; transition: opacity 0.2s;
+  }
+  .mission-card.done .mission-done-tag { height: auto; margin-top: -4px; }
+  .mission-card.done .mission-done-tag { opacity: 1; }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .signal-ring { animation: none; opacity: 0.25; }
+    .confetti-piece { animation: none !important; display: none; }
+  }
+
+  /* CONFETTI */
+  .confetti-layer {
+    position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 2;
+  }
+  .confetti-piece {
+    position: absolute; top: -12px; width: 6px; height: 12px; opacity: 0.9;
+    animation: confetti-fall linear forwards;
+  }
+  @keyframes confetti-fall {
+    to { transform: translateY(340px) rotate(540deg); opacity: 0; }
+  }
+  #missions { max-width: 1160px; margin: 0 auto; padding: 88px 48px 40px; }
+  .section-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+    text-align: center;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700; letter-spacing: -0.02em; text-align: center;
+    margin-bottom: 14px;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--grey-light); text-align: center;
+    max-width: 560px; margin: 0 auto 56px;
+  }
+
+  .missions-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    max-width: 760px; margin: 0 auto;
+  }
+  .mission-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px 26px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: border-color 0.2s;
+  }
+  .mission-card:hover { border-color: var(--border-orange); }
+  .mission-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 2px; transition: background 0.2s, border-color 0.2s;
+  }
+  .mission-card:hover .mission-icon { background: var(--orange-dim); border-color: var(--border-orange); }
+  .mission-icon svg { width: 22px; height: 22px; }
+  .mission-top { display: flex; align-items: flex-start; justify-content: space-between; }
+  .mission-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 700;
+    color: var(--orange); letter-spacing: 0.08em; margin-top: 4px;
+  }
+  .mission-title {
+    font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .mission-body { font-size: 14.5px; color: var(--body-text); flex-grow: 1; }
+  .mission-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    margin-top: 4px;
+    background: var(--orange); color: var(--white);
+    padding: 11px 18px; border-radius: 8px; font-weight: 600;
+    font-size: 13.5px; text-decoration: none; text-align: center;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .mission-cta:hover { background: #e05200; box-shadow: 0 0 20px var(--orange-glow); }
+  .mission-cta.secondary {
+    background: transparent; color: var(--white);
+    border: 1px solid var(--border); box-shadow: none;
+  }
+  .mission-cta.secondary:hover { background: var(--surface-2); box-shadow: none; }
+  .mission-cta.disabled {
+    background: var(--surface-2); color: var(--grey-light);
+    border: 1px solid var(--border); cursor: default; pointer-events: none;
+  }
+
+  /* PRIZE SECTION */
+  #prizes { max-width: 1160px; margin: 0 auto; padding: 96px 48px; }
+  .prize-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 48px;
+  }
+  .prize-head { text-align: center; margin-bottom: 40px; }
+  .prize-icon {
+    width: 52px; height: 52px; margin: 0 auto 16px;
+    border-radius: 12px; background: var(--orange-dim);
+    border: 1px solid var(--border-orange);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .prize-icon svg { width: 26px; height: 26px; }
+  .prize-fund {
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700; letter-spacing: -0.02em; color: var(--orange); margin-bottom: 8px;
+  }
+  .prize-fund-label { font-size: 14px; color: var(--grey-light); }
+  .prize-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;
+  }
+  .prize-place {
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px 16px; text-align: center;
+  }
+  .prize-place .rank { font-size: 12px; color: var(--grey-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .prize-place .amount { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); }
+  .prize-note { font-size: 13.5px; color: var(--grey-light); text-align: center; line-height: 1.6; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px; text-align: center;
+  }
+  .footer-links {
+    display: flex; gap: 28px; justify-content: center; list-style: none;
+    margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .footer-links a { font-size: 13.5px; color: var(--grey-light); text-decoration: none; }
+  .footer-links a:hover { color: var(--white); }
+  .footer-copy { font-size: 12.5px; color: var(--grey); }
+
+  @media (max-width: 860px) {
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .missions-grid { grid-template-columns: 1fr; }
+    .prize-grid { grid-template-columns: repeat(2, 1fr); }
+    nav { padding: 16px 24px; }
+    #hero { padding: 140px 24px 56px; }
+    .explainer { padding: 0 24px; }
+    #missions { padding: 64px 24px 40px; }
+    #prizes { padding: 64px 24px; }
+    .prize-card { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://ultrastream.one/" class="nav-logo">Ultra<span>Stream</span></a>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="confetti-layer" id="confettiLayer"></div>
+  <div class="hero-inner">
+    <div class="signal">
+      <div class="signal-ring"></div>
+      <div class="signal-ring"></div>
+      <div class="signal-ring"></div>
+      <div class="signal-core">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#FF5C00" stroke-width="1.5" opacity="0.35"/>
+          <path d="M13 15C13 13.3431 14.3431 12 16 12H21C25.4183 12 29 15.5817 29 20C29 24.4183 25.4183 28 21 28H16C14.3431 28 13 26.6569 13 25V15Z" stroke="#FF5C00" stroke-width="1.6" stroke-linejoin="round"/>
+          <circle cx="20" cy="20" r="3" fill="#FF5C00"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-eyebrow">You're in</div>
+    <h1 class="hero-headline">Welcome to <span class="accent">Mission to a Million</span></h1>
+    <p class="hero-dek">You're officially one of UltraStream's first 1,000 Founding Creators. Here's the mission, and the four things you can do right now to get started.</p>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-cell">
+      <div class="stat-value"><span class="o">1,000,000</span></div>
+      <div class="stat-label">Verified member goal</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value">AUD <span class="o">1,000,000</span></div>
+      <div class="stat-label">Total reward fund</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value">AUD <span class="o">150,000</span></div>
+      <div class="stat-label">First unlock, for creators</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-value"><span class="o">100,000</span></div>
+      <div class="stat-label">Members to trigger it</div>
+    </div>
+  </div>
+</section>
+
+<div class="explainer reveal">
+  <div class="explainer-card">
+    <div class="explainer-mark">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.5 13.5L11 16L16 9" stroke="#FF5C00" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="12" r="9" stroke="#FF5C00" stroke-width="1.6"/>
+      </svg>
+    </div>
+    <p><strong>This is a mission!</strong> UltraStream grows to one million verified members when creators like you bring your communities across and complete simple missions together. The whole community works toward the same goal and unlocks AUD 1,000,000 in rewards!</p>
+  </div>
+</div>
+
+<div class="progress-wrap reveal">
+  <div class="progress-head">
+    <span class="progress-label">Your progress</span>
+    <span class="progress-count"><span class="o" id="progressDone">0</span> of <span id="progressTotal">4</span> complete</span>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+</div>
+
+<section id="missions">
+  <p class="section-eyebrow">The missions</p>
+  <h2 class="section-title">Missions to complete</h2>
+  <p class="section-sub">Every mission you complete counts toward the first unlock. More missions are on their way, start with these.</p>
+
+  <div class="missions-grid">
+
+    <div class="mission-card reveal" data-mission="show-up">
+      <div class="mission-top">
+        <div class="mission-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 10V14C3 14.5523 3.44772 15 4 15H6L11 19V5L6 9H4C3.44772 9 3 9.44772 3 10Z" stroke="#FF5C00" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M15 9C16.2 9.8 17 11.3 17 12C17 12.7 16.2 14.2 15 15" stroke="#FF5C00" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M18 6C20 7.6 21.3 9.7 21.3 12C21.3 14.3 20 16.4 18 18" stroke="#FF5C00" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <div class="mission-check">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5L10 17.5L19 7" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <span class="mission-num">Mission 01</span>
+      </div>
+      <h3 class="mission-title">Show up</h3>
+      <p class="mission-body">Post on your own socials that you've joined UltraStream. Tag <strong>@ultrastream.kruzer</strong> so we can find it and share it back.</p>
+      <a href="https://www.instagram.com/ultrastream.kruzer?igsh=bGlobnhycmJvaDM=" class="mission-cta secondary" target="_blank" rel="noopener">Tag us on Instagram</a>
+      <span class="mission-done-tag">Done, nice one</span>
+    </div>
+
+    <div class="mission-card reveal" data-mission="join-community">
+      <div class="mission-top">
+        <div class="mission-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6C4 4.89543 4.89543 4 6 4H18C19.1046 4 20 4.89543 20 6V14C20 15.1046 19.1046 16 18 16H10L6 19.5V16H6C4.89543 16 4 15.1046 4 14V6Z" stroke="#FF5C00" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="9" cy="10" r="1" fill="#FF5C00"/>
+            <circle cx="12" cy="10" r="1" fill="#FF5C00"/>
+            <circle cx="15" cy="10" r="1" fill="#FF5C00"/>
+          </svg>
+          <div class="mission-check">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5L10 17.5L19 7" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <span class="mission-num">Mission 02</span>
+      </div>
+      <h3 class="mission-title">Join the community</h3>
+      <p class="mission-body">Join the UltraStream Discord. This is where you'll hear from the team first, meet other Founding Creators, and get early access to new features.</p>
+      <a href="https://discord.com/invite/yyafp92dp2" class="mission-cta" target="_blank" rel="noopener">Join the Discord</a>
+      <span class="mission-done-tag">Done, nice one</span>
+    </div>
+
+    <!--
+    HELD BACK FOR NOW — "Create" and "Invite" missions are not set up yet.
+    Reinstate these cards (and change the two remaining cards below back to
+    Mission 05 / Mission 06) once both are ready.
+
+    <div class="mission-card">
+      <div class="mission-top">
+        <span class="mission-num">Mission 03</span>
+      </div>
+      <h3 class="mission-title">Create</h3>
+      <p class="mission-body">Upload your first piece of content on UltraStream. We watch for first uploads and highlight a few each week on our socials and in the creator newsletter.</p>
+      <a href="https://ultrastream.one/" class="mission-cta secondary" target="_blank" rel="noopener">Open UltraStream</a>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-top">
+        <span class="mission-num">Mission 04</span>
+      </div>
+      <h3 class="mission-title">Invite</h3>
+      <p class="mission-body">Share your unique referral link and bring your audience across. Anyone who joins through your link is permanently attributed to you.</p>
+      <a href="#" class="mission-cta disabled">Your link is on its way</a>
+    </div>
+    -->
+
+    <div class="mission-card reveal" data-mission="get-featured">
+      <div class="mission-top">
+        <div class="mission-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 9C4 7.89543 4.89543 7 6 7H8.17157C8.70201 7 9.21071 6.78929 9.58579 6.41421L10.4142 5.58579C10.7893 5.21071 11.298 5 11.8284 5H12.1716C12.702 5 13.2107 5.21071 13.5858 5.58579L14.4142 6.41421C14.7893 6.78929 15.298 7 15.8284 7H18C19.1046 7 20 7.89543 20 9V17C20 18.1046 19.1046 19 18 19H6C4.89543 19 4 18.1046 4 17V9Z" stroke="#FF5C00" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="12" cy="13" r="3.2" stroke="#FF5C00" stroke-width="1.6"/>
+          </svg>
+          <div class="mission-check">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5L10 17.5L19 7" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <span class="mission-num">Mission 03</span>
+      </div>
+      <h3 class="mission-title">Get featured</h3>
+      <p class="mission-body">Send us a photo for an official shoutout on UltraStream's channels.</p>
+      <a href="mailto:support@ultrastream.one?subject=Founding%20Creator%20Photo" class="mission-cta secondary">Email your photo</a>
+      <span class="mission-done-tag">Done, nice one</span>
+    </div>
+
+    <div class="mission-card reveal" data-mission="survey">
+      <div class="mission-top">
+        <div class="mission-icon">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="5" width="12" height="16" rx="2" stroke="#FF5C00" stroke-width="1.6"/>
+            <path d="M9 4.5C9 3.67157 9.67157 3 10.5 3H13.5C14.3284 3 15 3.67157 15 4.5V5.5H9V4.5Z" stroke="#FF5C00" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M9 12L11 14L15.5 9.5" stroke="#FF5C00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="mission-check">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.5L10 17.5L19 7" stroke="#0A0A0A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <span class="mission-num">Mission 04</span>
+      </div>
+      <h3 class="mission-title">Complete the survey</h3>
+      <p class="mission-body">Tell us about yourself and your channel. We use every response to shape the programme.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd0X2OhKbXbh9CjL52c9naFeVp0i2905sN0_5iYBe7ZpBwg7Q/viewform" class="mission-cta" target="_blank" rel="noopener">Fill in the survey</a>
+      <span class="mission-done-tag">Done, nice one</span>
+    </div>
+
+  </div>
+</section>
+
+<section id="prizes">
+  <div class="prize-card reveal">
+    <div class="prize-head">
+      <div class="prize-icon">
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="10" width="18" height="12" rx="1.5" stroke="#FF5C00" stroke-width="1.6"/>
+          <path d="M4 14H22" stroke="#FF5C00" stroke-width="1.6"/>
+          <path d="M13 10V22" stroke="#FF5C00" stroke-width="1.6"/>
+          <path d="M13 10C13 10 9.5 10 8.2 8.7C7.3 7.8 7.3 6.4 8.2 5.5C9.1 4.6 10.5 4.6 11.4 5.5C12.6 6.7 13 10 13 10Z" stroke="#FF5C00" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M13 10C13 10 16.5 10 17.8 8.7C18.7 7.8 18.7 6.4 17.8 5.5C16.9 4.6 15.5 4.6 14.6 5.5C13.4 6.7 13 10 13 10Z" stroke="#FF5C00" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="prize-fund">AUD 150,000</div>
+      <div class="prize-fund-label">First unlock, released once UltraStream reaches 100,000 verified members</div>
+    </div>
+    <div class="prize-grid">
+      <div class="prize-place"><div class="rank">1st</div><div class="amount">AUD 100,000</div></div>
+      <div class="prize-place"><div class="rank">2nd</div><div class="amount">AUD 25,000</div></div>
+      <div class="prize-place"><div class="rank">3rd</div><div class="amount">AUD 15,000</div></div>
+      <div class="prize-place"><div class="rank">4th</div><div class="amount">AUD 10,000</div></div>
+    </div>
+    <p class="prize-note">Placement isn't decided by community size alone, completing missions counts too. This is the first unlock of the AUD 1,000,000 Mission to a Million fund. This offer, including reward and revenue share eligibility, is subject to UltraStream's Terms and Conditions.</p>
+  </div>
+</section>
+
+<footer>
+  <ul class="footer-links">
+    <li><a href="https://discord.com/invite/yyafp92dp2" target="_blank" rel="noopener">Discord</a></li>
+    <li><a href="https://www.instagram.com/ultrastream.kruzer?igsh=bGlobnhycmJvaDM=" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="mailto:support@ultrastream.one">support@ultrastream.one</a></li>
+    <li><a href="https://ultrastream.one/">ultrastream.one</a></li>
+  </ul>
+  <div class="footer-copy">UltraStream is operated by Kruzer Ultraverse Pty Ltd (ABN 62 686 962 783)</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        revealObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // Mission progress tracker (stored locally per browser, not synced to any backend)
+  const STORAGE_KEY = 'ultrastream_missions_done';
+  const cards = document.querySelectorAll('.mission-card[data-mission]');
+  const total = cards.length;
+  const progressFill = document.getElementById('progressFill');
+  const progressDone = document.getElementById('progressDone');
+  document.getElementById('progressTotal').textContent = total;
+
+  function getDone() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+    catch (e) { return []; }
+  }
+  function setDone(arr) {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); } catch (e) {}
+  }
+  function renderProgress() {
+    const done = getDone();
+    cards.forEach(c => {
+      const id = c.getAttribute('data-mission');
+      c.classList.toggle('done', done.includes(id));
+    });
+    const count = done.filter(id => Array.from(cards).some(c => c.getAttribute('data-mission') === id)).length;
+    progressDone.textContent = count;
+    progressFill.style.width = total ? Math.round((count / total) * 100) + '%' : '0%';
+  }
+
+  cards.forEach(card => {
+    const id = card.getAttribute('data-mission');
+    const cta = card.querySelector('.mission-cta');
+    if (!cta || cta.classList.contains('disabled')) return;
+    cta.addEventListener('click', () => {
+      const done = getDone();
+      if (!done.includes(id)) {
+        done.push(id);
+        setDone(done);
+        renderProgress();
+      }
+    });
+  });
+  renderProgress();
+
+  // A brief, tasteful confetti burst on first load
+  (function () {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const layer = document.getElementById('confettiLayer');
+    if (!layer) return;
+    const colors = ['#FF5C00', '#ffffff', '#ff8a4d'];
+    const pieceCount = 26;
+    for (let i = 0; i < pieceCount; i++) {
+      const piece = document.createElement('span');
+      piece.className = 'confetti-piece';
+      piece.style.left = Math.random() * 100 + '%';
+      piece.style.background = colors[i % colors.length];
+      piece.style.animationDuration = (1.4 + Math.random() * 1.2) + 's';
+      piece.style.animationDelay = (Math.random() * 0.4) + 's';
+      piece.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      layer.appendChild(piece);
+    }
+    setTimeout(() => { layer.innerHTML = ''; }, 3200);
+  })();
+</script>
+
+</body>
+</html>
