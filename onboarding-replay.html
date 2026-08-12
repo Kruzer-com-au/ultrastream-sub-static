@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding Call Replay — UltraStream</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0A0A0A;
+    --surface:#111111;
+    --surface-2:#1A1A1A;
+    --orange:#FF5C00;
+    --grey-light:#888888;
+    --border:rgba(255,255,255,0.07);
+    --white:#F5F5F5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.eyebrow,nav .logo{
+    font-family:'Space Grotesk',sans-serif;
+  }
+  a{color:var(--orange);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--orange);
+    outline-offset:3px;
+  }
+  img,video,iframe{max-width:100%;display:block;}
+
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 6vw;
+    border-bottom:1px solid var(--border);
+  }
+  nav .logo{
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:0.02em;
+    color:var(--white);
+  }
+  nav .logo span{color:var(--orange);}
+  nav a.back{
+    font-size:0.85rem;
+    font-weight:500;
+    color:var(--grey-light);
+  }
+  nav a.back:hover{color:var(--orange);}
+
+  main{max-width:920px;margin:0 auto;padding:0 6vw;}
+
+  .hero{
+    padding:64px 0 40px;
+    border-bottom:1px solid var(--border);
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--orange);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--orange);
+    display:inline-block;
+  }
+  h1{
+    font-size:clamp(2rem, 5vw, 3rem);
+    font-weight:700;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin-bottom:16px;
+  }
+  .hero p.lede{
+    font-size:1.05rem;
+    color:#C9C9C9;
+    max-width:60ch;
+  }
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:24px;
+  }
+  .meta-pill{
+    font-size:0.8rem;
+    font-weight:500;
+    color:var(--grey-light);
+    border:1px solid var(--border);
+    background:var(--surface);
+    padding:7px 14px;
+    border-radius:999px;
+  }
+  .meta-pill strong{color:var(--white);font-weight:600;}
+
+  .video-section{padding:40px 0;}
+  .video-frame{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:#000;
+    border:1px solid var(--border);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .video-frame iframe{
+    position:absolute;
+    top:0;left:0;width:100%;height:100%;
+    border:0;
+  }
+
+  .recap{
+    padding:8px 0 48px;
+  }
+  .recap h2{
+    font-size:1.4rem;
+    font-weight:600;
+    margin-bottom:20px;
+  }
+  .recap-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+  .recap-card{
+    border:1px solid var(--border);
+    background:var(--surface);
+    padding:20px;
+    border-radius:4px;
+  }
+  .recap-card .num{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:0.75rem;
+    font-weight:600;
+    color:var(--orange);
+    letter-spacing:0.06em;
+    display:block;
+    margin-bottom:8px;
+  }
+  .recap-card h3{
+    font-size:1rem;
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .recap-card p{
+    font-size:0.9rem;
+    color:var(--grey-light);
+  }
+
+  .action{
+    border:1px solid var(--border);
+    background:linear-gradient(180deg, var(--surface-2), var(--surface));
+    border-left:3px solid var(--orange);
+    padding:22px 24px;
+    border-radius:4px;
+    margin:8px 0 56px;
+  }
+  .action p{color:#D5D5D5;font-size:0.95rem;}
+  .action strong{color:var(--white);}
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:40px 6vw 60px;
+    margin-top:40px;
+  }
+  footer .links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    font-size:0.85rem;
+    margin-bottom:16px;
+  }
+  footer .links a{color:var(--grey-light);}
+  footer .links a:hover{color:var(--orange);}
+  footer .entity{
+    font-size:0.78rem;
+    color:#5a5a5a;
+  }
+
+  @media (max-width:640px){
+    .recap-grid{grid-template-columns:1fr;}
+    nav{padding:18px 5vw;}
+    .hero{padding:44px 0 32px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Ultra<span>Stream</span></div>
+  <a class="back" href="https://ultrastream.one/">← ultrastream.one</a>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <span class="eyebrow">Founding Creator Programme</span>
+    <h1>Onboarding call replay</h1>
+    <p class="lede">The first Founding Creator onboarding call, hosted by Shari (Head of Strategy) and Pramod (product). If you missed it live, or want to send it to your community, this is the full recording and transcript.</p>
+    <div class="meta-row">
+      <span class="meta-pill">Recorded <strong>7 August 2026</strong></span>
+      <span class="meta-pill">Hosts <strong>Shari &amp; Pramod</strong></span>
+      <span class="meta-pill">Runtime <strong>~25 min</strong></span>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="video-frame">
+      <iframe src="https://player.vimeo.com/video/1216440969?h=d44fed4772" title="UltraStream Founding Creator Onboarding — 7 August 2026" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="recap">
+    <h2>What's covered</h2>
+    <div class="recap-grid">
+      <div class="recap-card">
+        <span class="num">WHY WE BUILT IT</span>
+        <h3>The 97% revenue share</h3>
+        <p>Why UltraStream is flipping the usual platform split, and what it means for the first 1,000 creators.</p>
+      </div>
+      <div class="recap-card">
+        <span class="num">THE VALUES</span>
+        <h3>Gift of giving, reconnecting people, quality of time, reducing poverty</h3>
+        <p>The four values built into the platform, and how they connect to the wider Ultraverse ecosystem.</p>
+      </div>
+      <div class="recap-card">
+        <span class="num">FOUNDING CREATOR PERKS</span>
+        <h3>What you get for being early</h3>
+        <p>Founder badge, priority promotion, early access to Ultraverse games, VIP event access and onboarding support.</p>
+      </div>
+      <div class="recap-card">
+        <span class="num">PRODUCT WALKTHROUGH</span>
+        <h3>A first look at the app</h3>
+        <p>Pramod walks through becoming a creator, going live, and how rewards work between creators and viewers.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="action">
+    <p><strong>Not signed up yet?</strong> Make sure you've joined the wait list at <a href="https://ultrastream.one/">ultrastream.one</a> so you're locked in as one of the first 1,000 founding creators.</p>
+  </div>
+
+
+</main>
+
+<footer>
+  <div class="links">
+    <a href="https://discord.com/invite/yyafp92dp2">Discord</a>
+    <a href="https://www.instagram.com/ultrastream.kruzer?igsh=bGlobnhycmJvaDM=">Instagram</a>
+    <a href="mailto:support@ultrastream.one">support@ultrastream.one</a>
+    <a href="https://ultrastream.one/">ultrastream.one</a>
+  </div>
+  <p class="entity">UltraStream is operated by Kruzer Ultraverse Pty Ltd (ABN 62 686 962 783)</p>
+</footer>
+
+</body>
+</html>
