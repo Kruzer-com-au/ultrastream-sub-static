@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<!-- Google tag (gtag.js) -->
+<head>\n<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-G2GLYXRX31"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,6 +35,7 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
   tap('detect');
 </script>
 <!-- End Tapfiliate -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Community Guidelines — UltraStream</title>
@@ -89,23 +89,20 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
     letter-spacing: -0.02em; color: var(--white); text-decoration: none;
   }
   .nav-logo span { color: var(--orange); }
-  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-  .nav-links li { display: flex; align-items: center; }
+  .nav-links { display: flex; align-items: center; gap: 26px; list-style: none; }
   .nav-links a {
-    font-size: 14px; font-weight: 500; color: var(--grey-light);
-    text-decoration: none; transition: color 0.2s;
-    display: inline-flex; align-items: center;
+    font-size: 13.5px; font-weight: 500; color: var(--grey-light);
+    text-decoration: none; transition: color 0.2s; white-space: nowrap;
   }
   .nav-links a:hover { color: var(--white); }
   .nav-links a.current { color: var(--white); }
-  .nav-links a.nav-cta, .nav-cta {
-    display: inline-flex; align-items: center; justify-content: center; line-height: 1;
-    background: var(--orange) !important; color: #FFFFFF !important;
-    padding: 10px 22px; border-radius: 6px; font-weight: 600 !important;
-    font-size: 14px !important; text-decoration: none !important;
+  .nav-cta {
+    background: var(--orange); color: var(--white);
+    padding: 10px 22px; border-radius: 6px; font-weight: 600;
+    font-size: 14px; text-decoration: none;
     transition: background 0.2s, box-shadow 0.2s;
   }
-  .nav-links a.nav-cta:hover, .nav-cta:hover { background: #e05200 !important; color: #FFFFFF !important; box-shadow: 0 0 24px var(--orange-glow) !important; }
+  .nav-cta:hover { background: #e05200; box-shadow: 0 0 24px var(--orange-glow); }
 
   .container { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
 
@@ -177,6 +174,13 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
   .chapters-card a.active { color: var(--white); border-left: 2px solid var(--orange); font-weight: 600; }
   .chapters-card .tc { font-family: 'Space Grotesk', sans-serif; font-size: 11px; color: var(--orange); flex-shrink: 0; opacity: .85; }
 
+  .chapters-card .csae-link {
+    margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border);
+  }
+  .chapters-card .csae-link a {
+    color: var(--orange); font-weight: 600; padding-left: 0; border-left: none;
+  }
+
   main.doc { min-width: 0; max-width: 700px; }
   .doc-section { padding-top: 52px; margin-top: 52px; border-top: 1px solid var(--border); }
   .doc-section:first-of-type { border-top: none; margin-top: 8px; padding-top: 0; }
@@ -222,10 +226,11 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
     transition: border-color 0.3s;
   }
   .subsection:hover { border-color: var(--border-orange); }
+  .subsection.severe { border-color: rgba(139,0,0,0.35); background: rgba(139,0,0,0.08); }
+  .subsection.severe:hover { border-color: rgba(139,0,0,0.5); }
   .subsection h4 { margin-top: 0; }
   .subsection p:last-child, .subsection ul:last-child { margin-bottom: 0; }
 
-  /* Strikes ladder — echoes dash-metric card language */
   .ladder { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
   .rung {
     display: grid; grid-template-columns: 52px 1fr; gap: 16px;
@@ -252,12 +257,15 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
   }
   .footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--white); text-decoration: none; }
   .footer-logo span { color: var(--orange); }
-  .footer-links { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+  .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
   .footer-links a { font-size: 13px; color: var(--grey-light); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--white); }
   .footer-links a.current { color: var(--orange); }
   .footer-copy { font-size: 12px; color: var(--grey); }
 
+  @media (max-width: 1100px) {
+    .nav-links li:nth-child(1) { display: none; }
+  }
   @media (max-width: 960px) {
     nav { padding: 16px 24px; }
     .nav-links li:not(:last-child) { display: none; }
@@ -277,26 +285,26 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
 <body>
 
 <nav>
-  <a href="./index.html" class="nav-logo">Ultra<span>Stream</span></a>
+  <a href="https://ultrastream.one/" class="nav-logo">Ultra<span>Stream</span></a>
   <ul class="nav-links">
     <li><a href="./terms-and-conditions.html">Terms</a></li>
     <li><a href="./privacy-policy.html">Privacy</a></li>
     <li><a href="./community-guidelines.html" class="current">Community Guidelines</a></li>
     <li><a href="./child-safety-standards.html">Child Safety</a></li>
-    <li><a href="./index.html" class="nav-cta">Back to UltraStream</a></li>
+    <li><a href="https://ultrastream.one/" class="nav-cta">Back to UltraStream</a></li>
   </ul>
 </nav>
 
 <div id="legal-hero">
   <div class="hero-grid-bg"></div>
   <div class="legal-hero-inner">
-    <div class="hero-eyebrow">In effect from 1 August 2026</div>
+    <div class="hero-eyebrow">In effect from 5 August 2026</div>
     <h1 class="legal-headline">Community <span class="accent">Guidelines</span></h1>
     <p class="legal-dek">What is and is not allowed on UltraStream, and how we enforce those standards, for everyone who uses the app as a Viewer or a Creator.</p>
     <div class="meta-strip">
       <div class="meta-item"><span class="meta-item-value">All users</span><span class="meta-item-label">Applies to</span></div>
-      <div class="meta-item"><span class="meta-item-value">1 August 2026</span><span class="meta-item-label">Effective date</span></div>
-      <div class="meta-item"><span class="meta-item-value">1 August 2026</span><span class="meta-item-label">Last updated</span></div>
+      <div class="meta-item"><span class="meta-item-value">5 August 2026</span><span class="meta-item-label">Effective date</span></div>
+      <div class="meta-item"><span class="meta-item-value">5 August 2026</span><span class="meta-item-label">Last updated</span></div>
     </div>
   </div>
 </div>
@@ -315,6 +323,7 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
       <li><a href="#s8"><span class="tc">08</span>Changes to these Guidelines</a></li>
       <li><a href="#s9"><span class="tc">09</span>Contact us</a></li>
     </ol>
+    <div class="csae-link"><a href="./child-safety-standards.html">→ Child Safety Standards</a></div>
   </aside>
 
   <main class="doc">
@@ -323,15 +332,15 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
       <p class="section-label">01 · Overview</p>
       <h2>Introduction</h2>
       <p>These Community Guidelines explain what is and is not allowed on UltraStream, and how we enforce those standards. They apply to everyone who uses the App, whether as a Viewer or a Creator, as those terms are defined in the UltraStream Terms &amp; Conditions.</p>
-      <p>These Guidelines sit alongside, and do not replace, the Terms &amp; Conditions and the Privacy Policy. Where there is a conflict between these Guidelines and the Terms &amp; Conditions, the Terms &amp; Conditions take priority.</p>
+      <p>These Guidelines sit alongside, and do not replace, the Terms &amp; Conditions, the Privacy Policy, and our Child Safety Standards. Where there is a conflict between these Guidelines and the Terms &amp; Conditions, the Terms &amp; Conditions take priority.</p>
       <p>We may update these Guidelines from time to time as the App and its community grow. Material changes will be notified in the same way as changes to the Terms &amp; Conditions.</p>
     </section>
 
     <section class="doc-section" id="s2">
       <p class="section-label">02 · Safety</p>
       <h2>Our approach to safety</h2>
-      <p>UltraStream is intended for people aged 18 and over, with a higher age threshold for Creators receiving payouts, as set out in the Terms &amp; Conditions. We design and operate the App with the safety and best interests of younger users in mind, consistent with the Basic Online Safety Expectations and applicable Australian safety codes.</p>
-      <p>We use a combination of proactive detection tools, human review, and user reports to identify and act on content or conduct that breaches these Guidelines. If you have a serious online safety concern that we have not resolved, you can contact the eSafety Commissioner at <a href="https://esafety.gov.au" target="_blank" rel="noopener noreferrer">esafety.gov.au</a>.</p>
+      <p>UltraStream is intended for people aged 18 and over. We design and operate the App with the safety and best interests of younger people in mind, consistent with the Basic Online Safety Expectations and applicable Australian safety codes.</p>
+      <p>We use a combination of proactive detection tools, human review, and user reports to identify and act on content or conduct that breaches these Guidelines. If you have a serious online safety concern that we have not resolved, you can contact the eSafety Commissioner at <a href="https://esafety.gov.au">esafety.gov.au</a>.</p>
     </section>
 
     <section class="doc-section" id="s3">
@@ -339,9 +348,9 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
       <h2>Content and conduct standards</h2>
       <p>The following is not allowed on UltraStream, whether in a live stream, an upload, a Short, a chat message, a profile, or anywhere else on the App.</p>
 
-      <div class="subsection">
+      <div class="subsection severe">
         <h4>3.1 Child safety</h4>
-        <p>We have zero tolerance for content that sexualises, exploits, or endangers anyone under 18. This includes child sexual exploitation material in any form, grooming behaviour, and content that presents a minor in a sexualised manner. We remove this content immediately, permanently ban the accounts involved, and report to the relevant authorities as required by law.</p>
+        <p>Kruzer Ultraverse Pty Ltd, the developer of UltraStream, explicitly and unconditionally prohibits Child Sexual Abuse and Exploitation (CSAE) on UltraStream. This includes, without limitation, child sexual abuse material (CSAM) in any form, the sexualisation of minors, grooming behaviour, sextortion, trafficking, and any other conduct that endangers or exploits anyone under 18. We remove this content immediately, permanently ban the accounts involved without prior warning, and report to the National Center for Missing &amp; Exploited Children (NCMEC) and other relevant authorities as required by law. Our full Child Safety Standards, including our designated child safety point of contact, are published separately and referenced in Section 9.</p>
       </div>
 
       <div class="subsection">
@@ -406,7 +415,7 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
 
       <div class="subsection">
         <h4>3.9 Intellectual property</h4>
-        <p>Do not upload or stream content that infringes someone else's copyright, trademark, or other intellectual property rights. See Section 7 for how to report infringing content.</p>
+        <p>Do not upload or stream content that infringes someone else's copyright, trademark, or other intellectual property rights. See Section 8 for how to report infringing content.</p>
       </div>
     </section>
 
@@ -442,7 +451,7 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
         <li>Withholding or clawing back rewards obtained through manipulation, consistent with the Terms &amp; Conditions</li>
         <li>Reporting to law enforcement or relevant authorities, where required or appropriate</li>
       </ul>
-      <div class="callout severe"><p>Severe breaches, such as child sexual exploitation material or credible threats of violence, result in immediate content removal and an immediate permanent ban, without prior warning.</p></div>
+      <div class="callout severe"><p>Severe breaches, such as content or conduct that breaches our Child Safety Standards or credible threats of violence, result in immediate content removal and an immediate permanent ban, without prior warning.</p></div>
 
       <h3>Strikes and appeals</h3>
       <p>For less severe or first-time breaches, we generally operate a strikes system before permanently restricting an account:</p>
@@ -475,6 +484,7 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
       <ul>
         <li>Email: <a href="mailto:admin@kruzer.com.au">admin@kruzer.com.au</a></li>
         <li>Postal: Kruzer Ultraverse Pty Ltd (ABN 62 686 962 783), Level 13, 60 Castlereagh Street, Sydney NSW 2000, Australia</li>
+        <li>Child Safety Standards: see our <a href="./child-safety-standards.html">Child Safety Standards</a> page for our published CSAE policy and dedicated child safety point of contact.</li>
       </ul>
     </section>
 
@@ -482,21 +492,20 @@ src="https://www.facebook.com/tr?id=2069378886946835&ev=PageView&noscript=1"
 </div>
 
 <footer>
-  <a href="./index.html" class="footer-logo">Ultra<span>Stream</span></a>
+  <a href="https://ultrastream.one/" class="footer-logo">Ultra<span>Stream</span></a>
   <ul class="footer-links">
-    <li><a href="./index.html#what-you-get">Creators</a></li>
-    <li><a href="./index.html#viewers">Viewers</a></li>
-    <li><a href="./index.html#ultraverse">Ultraverse</a></li>
+    <li><a href="https://ultrastream.one/#what-you-get">Creators</a></li>
+    <li><a href="https://ultrastream.one/#viewers">Viewers</a></li>
     <li><a href="./terms-and-conditions.html">Terms</a></li>
     <li><a href="./privacy-policy.html">Privacy</a></li>
     <li><a href="./community-guidelines.html" class="current">Community Guidelines</a></li>
-    <li><a href="./child-safety-standards.html">Child Safety</a></li>
+    <li><a href="./child-safety-standards.html">Child Safety Standards</a></li>
   </ul>
   <div class="footer-copy">© 2026 Kruzer Ultraverse Pty Ltd</div>
 </footer>
 
 <script>
-  const links = document.querySelectorAll('.chapters-card a');
+  const links = document.querySelectorAll('.chapters-card ol a');
   const sections = document.querySelectorAll('main.doc .doc-section');
   const map = new Map();
   links.forEach(l => map.set(l.getAttribute('href').slice(1), l));
