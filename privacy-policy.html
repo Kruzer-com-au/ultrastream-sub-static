@@ -16,7 +16,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -747,19 +747,23 @@
 
         <div class="subsection">
           <h4>4.2 Age verification</h4>
-          <p>To determine which content is appropriate to show you, the App uses a video-based age verification process
-            provided by our third-party verification partner, Yoti. Where this feature is active:</p>
+          <p>To confirm you are 18 or older before sign-up, the App captures a single live selfie photo (JPEG) on your
+            device. This is biometric-related information.</p>
           <ul>
-            <li>Yoti processes a short video or image of you to estimate your age. This is biometric information.</li>
-            <li>Kruzer Ultraverse receives an age tier or age confirmation result from Yoti, not the underlying video or
-              image itself, which is handled directly by Yoti in accordance with its own privacy policy and retention
-              practices</li>
-            <li>The age tier is used to determine which content categories are visible to your account.</li>
+            <li>The App sends that image to the UltraStream verification API, which forwards it to our age-verification
+              partner, Yoti, for facial age estimation and liveness/anti-spoofing. UltraStream does not store the face
+              image in our database or file storage. Yoti processes the image under Yoti’s privacy policy.</li>
+            <li>UltraStream stores only the pass/fail result (is_18_plus), not facial geometry and not a predicted age.
+              The result is used solely to determine 18+ sign-up eligibility. It is not used for identification,
+              advertising, or profiling.</li>
+            <li>Face images are processed in memory for the request only and are discarded after verification.
+              Verification outcomes are kept for the life of the account and up to 24 months after account closure (see
+              Section 12). A short-lived cache may hold a pass result for up to 7 days or a fail result for up to 5
+              minutes.</li>
           </ul>
-          <p>We rely on your explicit consent to carry out age estimation, which is a form of biometric processing. You
-            may withdraw consent at any time, and we offer an alternative age-verification method where estimation is
-            unavailable or declined. We complete a Data Protection Impact Assessment before this feature is enabled.</p>
-          <p>This feature is in development and not yet enforced in the current release.</p>
+          <p>We rely on your consent for this biometric processing. You may withdraw consent by not completing sign-up
+            or by contacting us.</p>
+          <!-- <p>This feature is in development and not yet enforced in the current release.</p> -->
         </div>
 
         <div class="subsection">
@@ -792,7 +796,7 @@
             needed to provide the relevant functionality, and you can manage permissions at any time through your device
             settings:</p>
           <ul>
-            <li>Camera: to capture and broadcast your live video stream</li>
+            <li>Camera: age-verification selfie, and (for creators) ID face match via Yoti.</li>
             <li>Microphone: to capture and broadcast your live audio</li>
             <li>Photo/video library: where you choose to upload a profile picture, thumbnail, or pre-recorded clip</li>
             <li>Push notification token: to send you alerts about your stream, followers, and account activity</li>
