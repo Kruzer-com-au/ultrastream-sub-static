@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UltraStream Creator Referral Program</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0a0a;font-family:'Barlow',Arial,sans-serif;color:#fff}
+.wrapper{padding:50px 18px}
+.container{max-width:620px;margin:0 auto}
+.logo{margin-bottom:32px}
+.logo img{max-width:150px;height:auto;display:block}
+.card{background:#111;border:1px solid #1f1f1f;border-radius:16px;padding:44px}
+.tag{display:inline-block;margin-bottom:22px;padding:6px 11px;background:rgba(225,89,0,.10);border:1px solid rgba(225,89,0,.25);border-radius:4px;color:#E15900;font-size:10px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+h1{margin-bottom:18px;font-size:38px;line-height:1.08;font-weight:900}
+h1 span{color:#E15900}
+.intro{margin-bottom:32px;color:#888;font-size:16px;line-height:1.7}
+.form-row{display:flex;gap:14px}
+.form-group{width:100%;margin-bottom:20px}
+label{display:block;margin-bottom:8px;color:#ccc;font-size:13px;font-weight:600}
+input,select{width:100%;padding:15px 16px;background:#0a0a0a;border:1px solid #292929;border-radius:8px;color:#fff;font-family:'Barlow',Arial,sans-serif;font-size:15px;outline:none}
+input:focus,select:focus{border-color:#E15900}
+input::placeholder{color:#484848}
+select option{background:#111;color:#fff}
+.terms{display:flex;align-items:flex-start;gap:10px;margin:8px 0 26px}
+.terms input{width:auto;margin-top:4px}
+.terms label{margin:0;color:#777;font-size:13px;line-height:1.6}
+.terms a{color:#E15900;text-decoration:none}
+button{width:100%;padding:18px 24px;border:0;border-radius:8px;background:linear-gradient(90deg,#D80A00 0%,#E15900 50%,#FF7F00 100%);color:#fff;font-family:'Barlow',Arial,sans-serif;font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer}
+button:hover{opacity:.92}
+button:disabled{opacity:.55;cursor:not-allowed}
+.helper{margin-top:14px;color:#444;font-size:12px;text-align:center;line-height:1.5}
+.message{display:none;margin-top:22px;padding:16px;border-radius:8px;font-size:14px;line-height:1.6}
+.message.success{display:block;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);color:#b7e9c6}
+.message.error{display:block;background:rgba(216,10,0,.08);border:1px solid rgba(216,10,0,.25);color:#ffb4ae}
+.footer{padding:28px 10px 0;text-align:center;color:#363636;font-size:11px;line-height:1.7}
+@media(max-width:620px){.wrapper{padding:28px 12px}.card{padding:30px 22px}h1{font-size:31px}.form-row{display:block}}
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="container">
+    <div class="logo">
+      <a href="https://www.ultrastream.one/" target="_blank">
+        <img src="https://img.mailinblue.com/11330981/images/content_library/original/6a46b38126f152a8c914b592.png" alt="UltraStream">
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="tag">Creator Referral Program</div>
+
+      <h1>Join the mission.<br><span>Grow with UltraStream.</span></h1>
+
+      <div class="intro">
+        Create your account to access your unique referral link,
+        invite creators and members of your community, and take part
+        in Mission to a Million.
+      </div>
+
+      <form id="creatorSignup">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstname">First name</label>
+            <input type="text" id="firstname" name="firstname" placeholder="First name" required>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last name</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Last name" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Create password</label>
+          <input type="password" id="password" name="password" placeholder="Create a secure password" required minlength="8">
+        </div>
+
+        <div class="form-group">
+          <label for="channel_name">Creator / channel name</label>
+          <input type="text" id="channel_name" name="channel_name" placeholder="Your creator or channel name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="platform">Primary platform</label>
+          <select id="platform" name="platform" required>
+            <option value="">Select your primary platform</option>
+            <option value="twitch">Twitch</option>
+            <option value="youtube">YouTube</option>
+            <option value="tiktok">TikTok</option>
+            <option value="kick">Kick</option>
+            <option value="instagram">Instagram</option>
+            <option value="facebook">Facebook</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="channel_url">Channel / profile URL</label>
+          <input type="url" id="channel_url" name="channel_url" placeholder="https://..." required>
+        </div>
+
+        <div class="terms">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms">
+            I agree to the
+            <a href="https://www.ultrastream.one/terms-and-conditions" target="_blank">
+              Terms &amp; Conditions
+            </a>.
+          </label>
+        </div>
+
+        <button type="submit" id="submitButton">Create My Referral Account</button>
+
+        <div class="helper">
+          You'll receive access to your unique UltraStream referral link after registration.
+        </div>
+
+        <div id="formMessage" class="message"></div>
+      </form>
+    </div>
+
+    <div class="footer">
+      UltraStream is operated by Kruzer Ultraverse Pty Ltd.<br>
+      © 2026 Kruzer Ultraverse Pty Ltd. All Rights Reserved.
+    </div>
+  </div>
+</div>
+
+<script>
+const form = document.getElementById('creatorSignup');
+const button = document.getElementById('submitButton');
+const message = document.getElementById('formMessage');
+
+form.addEventListener('submit', async function(event) {
+  event.preventDefault();
+
+  button.disabled = true;
+  button.textContent = 'Creating Account...';
+
+  message.className = 'message';
+  message.textContent = '';
+
+  const data = {
+    firstname: document.getElementById('firstname').value.trim(),
+    lastname: document.getElementById('lastname').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    password: document.getElementById('password').value,
+    channel_name: document.getElementById('channel_name').value.trim(),
+    platform: document.getElementById('platform').value,
+    channel_url: document.getElementById('channel_url').value.trim(),
+    terms: document.getElementById('terms').checked
+  };
+
+  try {
+    const response = await fetch('/api/creator-signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || 'Signup failed.');
+    }
+
+    message.className = 'message success';
+    message.textContent = 'You’re in! Your referral account has been created. Check your email for the next steps.';
+    form.reset();
+
+  } catch (error) {
+    message.className = 'message error';
+    message.textContent = error.message || 'Something went wrong. Please try again.';
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Create My Referral Account';
+  }
+});
+</script>
+</body>
+</html>
