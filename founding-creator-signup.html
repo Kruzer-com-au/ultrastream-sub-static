@@ -40,9 +40,6 @@
   src="https://www.facebook.com/tr?id=2299772070775974&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
-  <script>
-    fbq('track', 'CompleteRegistration');
-  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap');
     *{box-sizing:border-box;margin:0;padding:0}
@@ -144,5 +141,18 @@
       </div>
     </div>
   </main>
+  <script>
+    window.addEventListener('message', function (event) {
+      if (event.data && (
+        event.data.action === 'form_submit_success' ||
+        event.data.type === 'sib-form-submission-success' ||
+        (typeof event.data === 'string' && event.data.includes('form_submit_success'))
+      )) {
+        if (typeof fbq === 'function') {
+          fbq('track', 'CompleteRegistration');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
