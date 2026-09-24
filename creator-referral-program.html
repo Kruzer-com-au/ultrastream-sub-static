@@ -407,7 +407,10 @@
         }
 
         if (result && result.success === true) {
-          // On success, redirect to Tapfiliate
+          // On success, track Meta Pixel conversion then redirect to Tapfiliate
+          if (typeof fbq === 'function') {
+            fbq('track', 'CompleteRegistration');
+          }
           window.location.href = 'https://ultrastream.tapfiliate.com/';
         } else {
           // On failure, stay on form and show error
